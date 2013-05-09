@@ -2,8 +2,18 @@
 
 one:
   name: MyString
-  data: 9.99
+  client: MyString
+  year: 9.99
+  charge: MyString
+  url: MyString
+  private_work: false
+  description: MyString
 
 two:
   name: MyString
-  data: 9.99
+  client: MyString
+  year: 9.99
+  charge: MyString
+  url: MyString
+  private_work: false
+  description: MyString

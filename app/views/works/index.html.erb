@@ -1,9 +1,16 @@
+<%= render :partial=>"header", :locals=>{ :css=>["works"] }%>
+
 <h1>Listing works</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Data</th>
+    <th>Client</th>
+    <th>Year</th>
+    <th>Charge</th>
+    <th>Url</th>
+    <th>Private work</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +19,12 @@
 <% @works.each do |work| %>
   <tr>
     <td><%= work.name %></td>
-    <td><%= work.data %></td>
+    <td><%= work.client %></td>
+    <td><%= work.year %></td>
+    <td><%= work.charge %></td>
+    <td><%= work.url %></td>
+    <td><%= work.private_work %></td>
+    <td><%= work.description %></td>
     <td><%= link_to 'Show', work %></td>
     <td><%= link_to 'Edit', edit_work_path(work) %></td>
     <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,3 +35,5 @@
 <br />
 
 <%= link_to 'New Work', new_work_path %>
+
+<%= render :partial=>"footer" %>

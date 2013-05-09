@@ -1,3 +1,5 @@
+<%= render :partial=>"header", :locals=>{ :css=>["works"] }%>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -6,10 +8,37 @@
 </p>
 
 <p>
-  <b>Data:</b>
-  <%= @work.data %>
+  <b>Client:</b>
+  <%= @work.client %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @work.year %>
+</p>
+
+<p>
+  <b>Charge:</b>
+  <%= @work.charge %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @work.url %>
+</p>
+
+<p>
+  <b>Private work:</b>
+  <%= @work.private_work %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @work.description %>
 </p>
 
 
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>
+
+<%= render :partial=>"footer" %>

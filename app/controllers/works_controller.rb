@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  layout false
+  
   # GET /works
   # GET /works.json
   def index
