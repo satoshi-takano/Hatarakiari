@@ -1,5 +1,3 @@
-<%= render :partial=>"header", :locals=>{ :css=>["works"] }%>
-
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -18,13 +16,13 @@
 </p>
 
 <p>
-  <b>Charge:</b>
-  <%= @work.charge %>
+  <b>Role:</b>
+  <%= @work.role %>
 </p>
 
 <p>
-  <b>Url:</b>
-  <%= @work.url %>
+  <b>Description:</b>
+  <%= @work.description %>
 </p>
 
 <p>
@@ -33,12 +31,14 @@
 </p>
 
 <p>
-  <b>Description:</b>
-  <%= @work.description %>
+  <b>Url:</b>
+  <%= @work.url %>
 </p>
+
+<%= render :partial=>'guest/index', :locals => {:guests => Guest.find_all_by_work_id(@work.id) || []} %>
+<p>Add a guest</p>
+<%= render :partial => 'guest/form', :locals => {:guest => @guest || Guest.new(:work_id => @work.id)} %>
 
 
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>
-
-<%= render :partial=>"footer" %>

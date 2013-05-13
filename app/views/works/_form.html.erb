@@ -1,7 +1,7 @@
 <%= form_for(@work) do |f| %>
   <% if @work.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@work.errors.count, "error") %> prohibited this work from being saved:</h2>
+      <h2><%= pluralize(@work.errors.count, "error") %> prohiited this work from being saved:</h2>
 
       <ul>
       <% @work.errors.full_messages.each do |msg| %>
@@ -12,32 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :client %><br />
+    <%= f.label :client %>
     <%= f.text_field :client %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
+    <%= f.label :year %>
     <%= f.text_field :year %>
   </div>
   <div class="field">
-    <%= f.label :charge %><br />
-    <%= f.text_field :charge %>
+    <%= f.label :role %>
+    <%= f.text_field :role %>
   </div>
   <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :private_work %><br />
+    <%= f.label :private_work %>
     <%= f.check_box :private_work %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
   </div>
   <div class="actions">
     <%= f.submit %>

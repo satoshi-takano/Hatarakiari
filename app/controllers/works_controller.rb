@@ -1,6 +1,4 @@
 class WorksController < ApplicationController
-  layout false
-  
   # GET /works
   # GET /works.json
   def index
@@ -16,7 +14,7 @@ class WorksController < ApplicationController
   # GET /works/1.json
   def show
     @work = Work.find(params[:id])
-
+    @guest = Guest.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @work }
@@ -76,6 +74,7 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find(params[:id])
     @work.destroy
+    Guest.destroy(Guest.find_all_by_work_id(@work.id))
 
     respond_to do |format|
       format.html { redirect_to works_url }

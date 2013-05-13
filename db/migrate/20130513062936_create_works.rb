@@ -4,10 +4,10 @@ class CreateWorks < ActiveRecord::Migration
       t.string :name
       t.string :client
       t.decimal :year
-      t.string :charge
-      t.string :url
+      t.string :role
+      t.text :description
       t.boolean :private_work
-      t.string :description
+      t.string :url
 
       t.timestamps
     end

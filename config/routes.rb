@@ -1,6 +1,11 @@
 Hatarakiari::Application.routes.draw do
   resources :works
 
+  resources :guests
+  match 'works/:work_id/guests' => 'guest#index'
+  match 'works/:work_id/guests/new' => 'guests#new'
+  match 'works/:work_id/guests/:guest_id' => 'guests#show'
+  match 'works/:work_id/guests/:guest_id/edit' => 'guests#edit'  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,16 +4,16 @@ one:
   name: MyString
   client: MyString
   year: 9.99
-  charge: MyString
-  url: MyString
+  role: MyString
+  description: MyText
   private_work: false
-  description: MyString
+  url: MyString
 
 two:
   name: MyString
   client: MyString
   year: 9.99
-  charge: MyString
-  url: MyString
+  role: MyString
+  description: MyText
   private_work: false
-  description: MyString
+  url: MyString

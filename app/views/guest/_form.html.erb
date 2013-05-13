@@ -1,0 +1,28 @@
+<%= form_for(guest, :url=>{:controller=>'guests', :action=>'create'}) do |f| %>
+
+<% if guest.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(guest.errors.count, "error") %> prohiited this work from being saved:</h2>
+
+  <ul>
+    <% guest.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= f.hidden_field :work_id %>
+<div class="field">
+  <%= f.label :login_id %>
+  <%= f.text_field :login_id %>
+</div>
+<div class="field">
+  <%= f.label :login_password %>
+  <%= f.password_field :login_password %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>

@@ -18,7 +18,7 @@ class WorksControllerTest < ActionController::TestCase
 
   test "should create work" do
     assert_difference('Work.count') do
-      post :create, work: { charge: @work.charge, client: @work.client, description: @work.description, name: @work.name, private_work: @work.private_work, url: @work.url, year: @work.year }
+      post :create, work: { client: @work.client, description: @work.description, name: @work.name, private_work: @work.private_work, role: @work.role, url: @work.url, year: @work.year }
     end
 
     assert_redirected_to work_path(assigns(:work))
@@ -35,7 +35,7 @@ class WorksControllerTest < ActionController::TestCase
   end
 
   test "should update work" do
-    put :update, id: @work, work: { charge: @work.charge, client: @work.client, description: @work.description, name: @work.name, private_work: @work.private_work, url: @work.url, year: @work.year }
+    put :update, id: @work, work: { client: @work.client, description: @work.description, name: @work.name, private_work: @work.private_work, role: @work.role, url: @work.url, year: @work.year }
     assert_redirected_to work_path(assigns(:work))
   end
 
