@@ -1,11 +1,11 @@
-<%= form_for(guest, :url=>{:controller=>'guests', :action=>'create'}) do |f| %>
+<%= form_for([@work, @guest]) do |f| %>
 
-<% if guest.errors.any? %>
+<% if @guest.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(guest.errors.count, "error") %> prohiited this work from being saved:</h2>
+  <h2><%= pluralize(@guest.errors.count, "error") %> prohiited this work from being saved:</h2>
 
   <ul>
-    <% guest.errors.full_messages.each do |msg| %>
+    <% @guest.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
     <% end %>
   </ul>

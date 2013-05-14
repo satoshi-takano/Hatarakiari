@@ -37,7 +37,7 @@
 
 <%= render :partial=>'guest/index', :locals => {:guests => Guest.find_all_by_work_id(@work.id) || []} %>
 <p>Add a guest</p>
-<%= render :partial => 'guest/form', :locals => {:guest => @guest || Guest.new(:work_id => @work.id)} %>
+<%= render 'guest/form' %>
 
 
 <%= link_to 'Edit', edit_work_path(@work) %> |

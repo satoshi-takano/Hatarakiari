@@ -3,7 +3,7 @@ class WorksController < ApplicationController
   # GET /works.json
   def index
     @works = Work.all
-
+    p Guest.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @works }
@@ -14,7 +14,8 @@ class WorksController < ApplicationController
   # GET /works/1.json
   def show
     @work = Work.find(params[:id])
-    @guest = Guest.new
+    @guest = @work.guests.build
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @work }
@@ -25,7 +26,8 @@ class WorksController < ApplicationController
   # GET /works/new.json
   def new
     @work = Work.new
-
+    @guest = @work.guests.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @work }
@@ -74,7 +76,6 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find(params[:id])
     @work.destroy
-    Guest.destroy(Guest.find_all_by_work_id(@work.id))
 
     respond_to do |format|
       format.html { redirect_to works_url }
