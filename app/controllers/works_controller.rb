@@ -2,8 +2,12 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
+    unless current_user
+      redirect_to auth_url
+      return
+    end
+    
     @works = Work.all
-    p Guest.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @works }
