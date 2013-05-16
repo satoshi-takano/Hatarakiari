@@ -1,13 +1,26 @@
 class WorksController < ApplicationController
+  
   # GET /works
   # GET /works.json
   def index
-    unless current_user
-      redirect_to auth_url
-      return
+    @works = Work.all
+    @tmpYears = { }
+
+    for @w in @works
+      p @w
+      @year = @w.year
+      if @tmpYears[@year] == nil
+        @tmpYears[@year] = []
+      end
+      @tmpYears[@year].push @w
+    end
+    @keys = @tmpYears.keys.sort
+
+    @years = []
+    for @k in @keys
+      @years.push @tmpYears[@k]
     end
     
-    @works = Work.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @works }
@@ -18,7 +31,6 @@ class WorksController < ApplicationController
   # GET /works/1.json
   def show
     @work = Work.find(params[:id])
-    @guest = @work.guests.build
     
     respond_to do |format|
       format.html # show.html.erb
@@ -86,4 +98,5 @@ class WorksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

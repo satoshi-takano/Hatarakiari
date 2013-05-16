@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20130516085708) do
     t.string   "login_password"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
     t.integer  "work_id"
   end
 
@@ -32,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130516085708) do
   create_table "works", :force => true do |t|
     t.string   "name"
     t.string   "client"
-    t.decimal  "year"
+    t.integer  "year"
     t.string   "role"
     t.text     "description"
     t.boolean  "private_work"

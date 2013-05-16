@@ -1,35 +1,36 @@
-<h1>Listing works</h1>
+<div id="container">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Client</th>
-    <th>Year</th>
-    <th>Role</th>
-    <th>Description</th>
-    <th>Private work</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @works.each do |work| %>
-  <tr>
-    <td><%= work.name %></td>
-    <td><%= work.client %></td>
-    <td><%= work.year %></td>
-    <td><%= work.role %></td>
-    <td><%= work.description %></td>
-    <td><%= work.private_work %></td>
-    <td><%= work.url %></td>
-    <td><%= link_to 'Show', work %></td>
-    <td><%= link_to 'Edit', edit_work_path(work) %></td>
-    <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="">
+    <!-- each years -->
+    <% for @works in @years %>
+    <h2><%= @works[0].year %></h2>
+    
+    <ul class="thumbnails">
+      <!-- each works in the year-->
+      <% for @work in @works %>
+      <li class="span4">
+        <div class="thumbnail">
+          <a href="<%= '/works/' + @work.id.to_s %>"><img src="<%= @work.thumbnail_url %>" class="" alt="" /></a>
+          <div class="caption">
+            <h4><%= @work.name %></h4>
+            <% for type in @work.role.split "," %>
+            <span class="label"><%= type %></span>
+            <% end %>
+            <p>
+              <a data-toggle="lightbox" href="<%= '/works/' + @work.id.to_s %>" class="btn btn-info btn-block">Detail</a>
+            </p>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    
+    <% end %>
+  </div>
 
-<br />
-
-<%= link_to 'New Work', new_work_path %>
+  <% if current_user %>
+  <%= link_to "New work", new_work_path %>
+  <%= link_to "Manage guests", guests_path %>
+  <% end %>
+</div>

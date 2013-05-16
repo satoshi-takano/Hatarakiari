@@ -1,44 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @work.name %>
-</p>
+<div class="row">
+  <div class="span12">
+    <div class="span4">
+      <h1><%= @work.name %></h1>
+      <% if @work.url %>
+      <small><a href="<%= @work.url %>"><%= @work.parsed_url %></a><%= @work.url_article %></small>
+      <% end %>
+      <h5>Client</h5>
+      <p><%= @work.client %></p>
+      <h5>担当</h5>
+      <p><%= @work.role %></p>
+      <p><%= @work.description %></p>
+      <p>-</p>
+      <a href="/works">Back</a>
+    </div>
+    
+    <div class="span7">
+      <div id="carousel" class="carousel slide">
+        <% filenames = []
+           for i in 0..5
+           filename = "/images/" + @work.id.to_s + "/" + i.to_s + ".png"
+           __FILE__ =~ /(.*?\/portfolio)\/app/
+           
+           if File.exist?(($1 || "") + "/public" + filename) 
+           filenames << filename
+                        else
+                        break
+                        end
+                        end %>
 
-<p>
-  <b>Client:</b>
-  <%= @work.client %>
-</p>
+        <ol class="carousel-indicators">
+          <% for f in filenames %>
+          <li data-target="#carousel" data-slide-to="0" class="<%= 'active' if f == filenames[0] %>"></li>
+          <% end %>
+        </ol>
+        <div class="carousel-inner">
+          <% for f in filenames %>
+          <img src="<%= f %>" class="item <%= 'active' if f == filenames[0] %>" alt="" />
+          <% end %>
+        </div>
+        <!-- Carousel nav -->
+        <% if 1 < filenames.length %>
+        <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+        <% end %>
+      </div>
+      
+    </div>
 
-<p>
-  <b>Year:</b>
-  <%= @work.year %>
-</p>
 
-<p>
-  <b>Role:</b>
-  <%= @work.role %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @work.description %>
-</p>
-
-<p>
-  <b>Private work:</b>
-  <%= @work.private_work %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @work.url %>
-</p>
-
-<%= render :partial=>'guest/index', :locals => {:guests => Guest.find_all_by_work_id(@work.id) || []} %>
-<p>Add a guest</p>
-<%= render 'guest/form' %>
-
+    
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>
