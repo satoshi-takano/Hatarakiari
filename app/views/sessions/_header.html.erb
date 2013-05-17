@@ -1,0 +1,9 @@
+<div id="header">
+  <% if current_user %>
+  <p>Welcome, <%=current_user.name %>. <%= link_to "Sign out", signout_path %></p>
+  <% else %>
+  <%= link_to "Login with twitter", "/auth/twitter" %> |
+  <%= link_to "Login with facebook", "/auth/facebook" %> |
+  <%= link_to "Login with Github", "/auth/github" %>
+  <% end %>
+</div>

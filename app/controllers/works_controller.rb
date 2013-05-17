@@ -1,39 +1,29 @@
-class WorksController < AuthorizationController
+class WorksController < ApplicationController
+  before_filter :require_admin, :except => [:show]
+
+  include WorksHelper
+  include SessionsHelper
   
   # GET /works
   # GET /works.json
   def index
-    @works = current_user.works;
-    @tmpYears = { }
-
-    for w in @works
-      year = w.year
-      if @tmpYears[year] == nil
-        @tmpYears[year] = []
-      end
-      @tmpYears[year].push w
-    end
-    @keys = @tmpYears.keys.sort
-
-    @years = []
-    for k in @keys
-      @years.push @tmpYears[k]
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @works }
-    end
+    @years = loadWorksEachYears
   end
 
   # GET /works/1
   # GET /works/1.json
   def show
-    @work = Work.find(params[:id])
+    if current_user
+      @work = Work.find_by_user_id_and_id(current_user.id, params[:id])
+    end
+
+    if current_guest && @work == nil
+      @work = Work.find_by_user_id_and_id(current_guest.user_id, params[:id])
+    end
     
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @work }
+    if @work == nil
+      @user_id = Work.find(params[:id]).user_id
+      render "users/authenticate"
     end
   end
 

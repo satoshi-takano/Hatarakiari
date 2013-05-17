@@ -1,63 +1,7 @@
+<%= render :partial => "sessions/header" if current_user%>
 <p id="notice"><%= notice %></p>
 
-<div class="row">
-  <div class="span12">
-    <div class="span4">
-      <h1><%= @work.name %></h1>
-      <% if @work.url %>
-      <small><a href="<%= @work.url %>"><%= @work.parsed_url %></a><%= @work.url_article %></small>
-      <% end %>
-      <h5>Client</h5>
-      <p><%= @work.client %></p>
-      <h5>担当</h5>
-      <p><%= @work.role %></p>
-      <p><%= @work.description %></p>
-      <p>-</p>
-      <a href="/works">Back</a>
-    </div>
-    
-    <div class="span7">
-      <div id="carousel" class="carousel slide">
-        <ol class="carousel-indicators">
-          <% if @work.image_0.file? %>
-          <li data-target="#carousel" data-slide-to="0" class="active"></li>
-          <% end %>
-          <% if @work.image_1.file? %>
-          <li data-target="#carousel" data-slide-to="0"></li>
-          <% end %>
-          <% if @work.image_2.file? %>
-          <li data-target="#carousel" data-slide-to="0"></li>
-          <% end %>
-          <% if @work.image_3.file? %>
-          <li data-target="#carousel" data-slide-to="0"></li>
-          <% end %>
-          <% if @work.image_4.file? %>
-          <li data-target="#carousel" data-slide-to="0"></li>
-          <% end %>
-        </ol>
-        <div class="carousel-inner">
-          <%= image_tag @work.image_0.url(:large), :class=>"item active" if @work.image_0.file? %>
-          <%= image_tag @work.image_1.url(:large), :class=>"item" if @work.image_1.file? %>
-          <%= image_tag @work.image_2.url(:large), :class=>"item" if @work.image_2.file? %>
-          <%= image_tag @work.image_3.url(:large), :class=>"item" if @work.image_3.file? %>
-          <%= image_tag @work.image_4.url(:large), :class=>"item" if @work.image_4.file? %>          
-        </div>
-        <!-- Carousel nav -->
-        <% if @work.image_1.file? %>
-        <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
-        <% end %>
-      </div>
-      
-    </div>
-
-
-    
-  </div>
-</div>
+<%= render :partial => "works/detail", :locals => { :work => @work } %>
 
 <%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
-
-
-<%= javascript_include_tag "bootstrap-carousel", "bootstrap-transition" %>
+<%= link_to 'Back', :back %>

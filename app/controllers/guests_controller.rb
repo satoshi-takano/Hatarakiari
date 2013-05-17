@@ -1,4 +1,7 @@
-class GuestsController < AuthorizationController
+class GuestsController < ApplicationController
+  before_filter :require_admin
+
+  include SessionsHelper
   
   def index
     if current_user
