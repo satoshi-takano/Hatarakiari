@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516085708) do
+ActiveRecord::Schema.define(:version => 20130517030925) do
 
   create_table "guests", :force => true do |t|
     t.string   "login_id"
@@ -38,8 +38,28 @@ ActiveRecord::Schema.define(:version => 20130516085708) do
     t.text     "description"
     t.boolean  "private_work"
     t.string   "url"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "image_0_file_name"
+    t.string   "image_0_content_type"
+    t.integer  "image_0_file_size"
+    t.datetime "image_0_updated_at"
+    t.string   "image_1_file_name"
+    t.string   "image_1_content_type"
+    t.integer  "image_1_file_size"
+    t.datetime "image_1_updated_at"
+    t.string   "image_2_file_name"
+    t.string   "image_2_content_type"
+    t.integer  "image_2_file_size"
+    t.datetime "image_2_updated_at"
+    t.string   "image_3_file_name"
+    t.string   "image_3_content_type"
+    t.integer  "image_3_file_size"
+    t.datetime "image_3_updated_at"
+    t.string   "image_4_file_name"
+    t.string   "image_4_content_type"
+    t.integer  "image_4_file_size"
+    t.datetime "image_4_updated_at"
   end
 
 end

@@ -41,3 +41,5 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+
+gem "paperclip", "~> 3.0"

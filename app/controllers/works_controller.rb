@@ -1,4 +1,4 @@
-class WorksController < ApplicationController
+class WorksController < AuthorizationController
   
   # GET /works
   # GET /works.json
@@ -6,21 +6,20 @@ class WorksController < ApplicationController
     @works = Work.all
     @tmpYears = { }
 
-    for @w in @works
-      p @w
-      @year = @w.year
-      if @tmpYears[@year] == nil
-        @tmpYears[@year] = []
+    for w in @works
+      year = w.year
+      if @tmpYears[year] == nil
+        @tmpYears[year] = []
       end
-      @tmpYears[@year].push @w
+      @tmpYears[year].push w
     end
     @keys = @tmpYears.keys.sort
 
     @years = []
-    for @k in @keys
-      @years.push @tmpYears[@k]
+    for k in @keys
+      @years.push @tmpYears[k]
     end
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @works }

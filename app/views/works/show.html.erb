@@ -18,30 +18,32 @@
     
     <div class="span7">
       <div id="carousel" class="carousel slide">
-        <% filenames = []
-           for i in 0..5
-           filename = "/images/" + @work.id.to_s + "/" + i.to_s + ".png"
-           __FILE__ =~ /(.*?\/portfolio)\/app/
-           
-           if File.exist?(($1 || "") + "/public" + filename) 
-           filenames << filename
-                        else
-                        break
-                        end
-                        end %>
-
         <ol class="carousel-indicators">
-          <% for f in filenames %>
-          <li data-target="#carousel" data-slide-to="0" class="<%= 'active' if f == filenames[0] %>"></li>
+          <% if @work.image_0.file? %>
+          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+          <% end %>
+          <% if @work.image_1.file? %>
+          <li data-target="#carousel" data-slide-to="0"></li>
+          <% end %>
+          <% if @work.image_2.file? %>
+          <li data-target="#carousel" data-slide-to="0"></li>
+          <% end %>
+          <% if @work.image_3.file? %>
+          <li data-target="#carousel" data-slide-to="0"></li>
+          <% end %>
+          <% if @work.image_4.file? %>
+          <li data-target="#carousel" data-slide-to="0"></li>
           <% end %>
         </ol>
         <div class="carousel-inner">
-          <% for f in filenames %>
-          <img src="<%= f %>" class="item <%= 'active' if f == filenames[0] %>" alt="" />
-          <% end %>
+          <%= image_tag @work.image_0.url, :class=>"item active" if @work.image_0.file? %>
+          <%= image_tag @work.image_1.url, :class=>"item" if @work.image_1.file? %>
+          <%= image_tag @work.image_2.url, :class=>"item" if @work.image_2.file? %>
+          <%= image_tag @work.image_3.url, :class=>"item" if @work.image_3.file? %>
+          <%= image_tag @work.image_4.url, :class=>"item" if @work.image_4.file? %>          
         </div>
         <!-- Carousel nav -->
-        <% if 1 < filenames.length %>
+        <% if @work.image_1.file? %>
         <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
         <% end %>

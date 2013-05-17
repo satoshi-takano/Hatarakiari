@@ -3,22 +3,22 @@
 
   <div class="">
     <!-- each years -->
-    <% for @works in @years %>
-    <h2><%= @works[0].year %></h2>
+    <% for works in @years %>
+    <h2><%= works[0].year %></h2>
     
     <ul class="thumbnails">
       <!-- each works in the year-->
-      <% for @work in @works %>
+      <% for work in works %>
       <li class="span4">
         <div class="thumbnail">
-          <a href="<%= '/works/' + @work.id.to_s %>"><img src="<%= @work.thumbnail_url %>" class="" alt="" /></a>
+          <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url %></a>
           <div class="caption">
-            <h4><%= @work.name %></h4>
-            <% for type in @work.role.split "," %>
+            <h4><%= work.name %></h4>
+            <% for type in work.role.split "," %>
             <span class="label"><%= type %></span>
             <% end %>
             <p>
-              <a data-toggle="lightbox" href="<%= '/works/' + @work.id.to_s %>" class="btn btn-info btn-block">Detail</a>
+              <a data-toggle="lightbox" href="<%= '/works/' + work.id.to_s %>" class="btn btn-info btn-block">Detail</a>
             </p>
           </div>
         </div>
