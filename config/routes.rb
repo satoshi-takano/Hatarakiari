@@ -1,5 +1,7 @@
 Hatarakiari::Application.routes.draw do
 
+  get "users/show"
+
   match "/auth/:provider/callback" => "sessions#callback"
   match "/signout" => "sessions#destroy"
 
@@ -7,9 +9,9 @@ Hatarakiari::Application.routes.draw do
 
   root :to => "sessions#index"
 
+  match "/users/:id" => "users#show"
   resources :works
   resources :guests
-
 
   # resources :works, :shallow => true do
   #   resources :guests

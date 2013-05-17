@@ -3,7 +3,7 @@ class WorksController < AuthorizationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    @works = current_user.works;
     @tmpYears = { }
 
     for w in @works
@@ -40,8 +40,8 @@ class WorksController < AuthorizationController
   # GET /works/new
   # GET /works/new.json
   def new
-    @work = Work.new
-    @guest = @work.guests.build
+    @work = current_user.works.build
+    @guest = current_user.guests.build
     
     respond_to do |format|
       format.html # new.html.erb
