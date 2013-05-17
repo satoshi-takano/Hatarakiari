@@ -44,10 +44,15 @@
     <%= f.label :url %>
     <%= f.text_field :url %>
   </div>
-  <div class="field">
-    <%= f.file_field :image_0 %>
+  <div class="field" id="image_selector">
+    <div>
+      <%= f.label :image_0 %>
+      <%= f.file_field :image_0 %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <%= javascript_include_tag "form" %>
 <% end %>
