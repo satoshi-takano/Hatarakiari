@@ -1,9 +1,9 @@
 <div id="header">
+  <%= image_tag "/assets/header/logo.png", :class=>"logo" %>
   <% if current_user %>
-  <p>Welcome, <%=current_user.name %>. <%= link_to "Sign out", signout_path %></p>
-  <% else %>
-  <%= link_to "Login with twitter", "/auth/twitter" %> |
-  <%= link_to "Login with facebook", "/auth/facebook" %> |
-  <%= link_to "Login with Github", "/auth/github" %>
+  <div id="admin-tool">
+    <%= p current_user.avatar_url; image_tag current_user.avatar_url, :size=>"24x24" %>
+    <%= link_to "Logout", "/logout" %>    
+  </div>
   <% end %>
 </div>

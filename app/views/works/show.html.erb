@@ -1,7 +1,10 @@
-<%= render :partial => "sessions/header" if current_user%>
-<p id="notice"><%= notice %></p>
+<%= render :partial => "sessions/header" if current_user %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "work_detail", :media=>"all" %>
+<%= stylesheet_link_tag "header", :media=>"all" %>
+<% end %>
 
 <%= render :partial => "works/detail", :locals => { :work => @work } %>
 
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', :back %>
+
+<%= javascript_include_tag "bootstrap-carousel", "bootstrap-transition" %>

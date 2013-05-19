@@ -2,10 +2,64 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.caption .btn {
-    margin-top: 15px;
-}
 
-.caption .badge {
-    margin-top: 10px;
+#container {
+    margin-left: 80px;
+
+    #works-header {
+        h2 {
+            margin: 0;
+            font-weight: lighter;
+            font-size: 18px;
+            color: #3c3c3c;
+            font-family: Helvetica;
+        }
+        display: block;
+        widht: 100%;
+        margin-right: 80px;
+        margin-top: 20px;
+        border-bottom: 1px solid #e8e8e8;
+
+        div {
+            float: right;
+            margin-top: -30px;
+            .add {
+                font-size: 12px;
+                font-weight: lighter;
+                font-family: Helvetica;
+                color: #3c3c3c;
+                img {
+                    float: left;
+                }
+                span {
+                    display:block;
+                    margin-left: 26px;
+                    padding-top: 5px;
+                }
+            }
+        }
+        
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-family: Helvetica;
+        font-size: 30px;
+        font-weight: lighter;
+        color: #888888;
+        margin-bottom: 10px;
+    }
+
+    .thumbnail {
+        h4 {
+            font-size: 18px;
+            color: #3c3c3c;
+            margin-bottom: 10px;
+        }
+        .caption .btn {
+            margin-top: 15px;
+        }
+        border: 1px solid #d7d7d7;
+        border-radius: 2px;
+    }
 }

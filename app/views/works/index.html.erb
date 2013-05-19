@@ -1,11 +1,18 @@
 <%= render :partial => "sessions/header" if current_user %>
 <% content_for :head do %>
 <%= stylesheet_link_tag "works", :media=>"all" %>
+<%= stylesheet_link_tag "header", :media=>"all" if current_user%>
 <% end %>
 
 <div id="container">
-
-
+  <% if current_user %>
+  <div id="works-header">
+    <h2><%= current_user.name %>'s works</h2>
+    <div>
+      <a href="<%= new_work_url %>" class="add"><%= image_tag "/assets/works/add.png" %><span>New work</span></a>
+    </div>
+  </div>
+  <% end %>
   <div class="">
     <!-- each years -->
     <% for works in @years %>
@@ -35,7 +42,6 @@
   </div>
 
   <% if current_user %>
-  <%= link_to "New work", new_work_path %>
   <%= link_to "Manage guests", guests_path %>
   <% end %>
 </div>

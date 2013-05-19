@@ -1,1 +1,16 @@
-<%= render :partial => "header" %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "sessions", :media=>"all" %>
+<% end %>
+
+<div id="authentication">
+  <%= image_tag "/assets/authentication/logo.png", :id=>"logo"%>
+  <div id="loginwith">
+    <%= image_tag "/assets/authentication/loginwith.png" %>
+    <ul id="sns">
+
+      <li><%= link_to (image_tag "/assets/authentication/github.png"), "/auth/github" %></li>
+      <li><%= link_to (image_tag "/assets/authentication/twitter.png"), "/auth/twitter" %></li>
+      <li class="last"><%= link_to (image_tag "/assets/authentication/facebook.png"), "/auth/facebook" %></li>      
+    </ul>
+  </div>
+</div>

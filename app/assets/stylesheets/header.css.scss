@@ -1,0 +1,24 @@
+$side-margin: 80px;
+$height: 55px;
+
+#header {
+    .logo {
+        margin-top: 16px;
+        margin-left: $side-margin;
+    }
+    background-color: #fff;
+    height: $height;
+    border-bottom: 1px solid #eaeaea;
+    #admin-tool {
+        display: inline;
+        float: right;
+        margin-right: $side-margin;
+        margin-top: ($height - 24px) * 0.5;
+
+        a {
+            font-size: 12px;
+            color: #3c3c3c;
+            
+        }
+    }
+}

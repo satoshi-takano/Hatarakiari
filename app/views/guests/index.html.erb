@@ -1,22 +1,20 @@
-<%= render :partial => "sessions/header" %>
-
-<table>
-  <tr>
-    <th>Login ID</th>
-    <th>Password</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @guests.each do |guest| %>
-  <tr>
-    <td><%= guest.login_id %></td>
-    <td><%= guest.login_password %></td>
-  </tr>
+<%= render :partial => "sessions/header" if current_user %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "guests", :media=>"all" %>
+<%= stylesheet_link_tag "header", :media=>"all" %>
 <% end %>
-</table>
 
-<br />
+<div id="container">
+  <h2>Guests</h2>
 
-<%= link_to "New guest", new_guest_path %>
+  <ul>
+    <% c = 0; @guests.each do |guest| %>
+    <li><%= (c += 1) %>. <%= guest.login_id %></li>
+    <% end %>
+  </ul>
+
+  <br />
+
+  <%= link_to "New guest", new_guest_path %>
+  
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517072117) do
+ActiveRecord::Schema.define(:version => 20130519091041) do
 
   create_table "guests", :force => true do |t|
     t.string   "login_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130517072117) do
     t.string   "provider"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "avatar_url"
   end
 
   create_table "works", :force => true do |t|

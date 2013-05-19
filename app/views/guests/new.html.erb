@@ -1,7 +1,13 @@
-<%= render :partial => "sessions/header" %>
+<%= render :partial => "sessions/header" if current_user %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "guests", :media=>"all" %>
+<%= stylesheet_link_tag "header", :media=>"all" %>
+<% end %>
 
-<h1>New guest</h1>
+<div id="container">
 
-<%= render :partial => 'form' %>
+  <%= render :partial => 'form' %>
 
-<%= link_to 'Back', :back %>
+  <%= link_to 'Back', :back %>
+  
+</div>
