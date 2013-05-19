@@ -3,11 +3,11 @@
 class Work < ActiveRecord::Base
   belongs_to :user
 
-  has_attached_file :image_0, :styles => { :thumb => "320x280", :large => "640x480"}
-  has_attached_file :image_1, :styles => { :thumb => "320x280", :large => "640x480"}
-  has_attached_file :image_2, :styles => { :thumb => "320x280", :large => "640x480"}
-  has_attached_file :image_3, :styles => { :thumb => "320x280", :large => "640x480"}
-  has_attached_file :image_4, :styles => { :thumb => "320x280", :large => "640x480"}
+  has_attached_file :image_0, :styles => { :thumb => "320x280#", :large => "640x480"}
+  has_attached_file :image_1, :styles => { :thumb => "320x280#", :large => "640x480"}
+  has_attached_file :image_2, :styles => { :thumb => "320x280#", :large => "640x480"}
+  has_attached_file :image_3, :styles => { :thumb => "320x280#", :large => "640x480"}
+  has_attached_file :image_4, :styles => { :thumb => "320x280#", :large => "640x480"}
   
   attr_accessible :client, :description, :name, :private_work, :role, :url, :year, :user_id, :image_0, :image_1, :image_2, :image_3, :image_4
   

@@ -1,4 +1,7 @@
 <%= render :partial => "sessions/header" if current_user %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "works", :media=>"all" %>
+<% end %>
 
 <div id="container">
 
@@ -13,7 +16,7 @@
       <% for work in works %>
       <li class="span4">
         <div class="thumbnail">
-          <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url %></a>
+          <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url(:thumb) %></a>
           <div class="caption">
             <h4><%= work.name %></h4>
             <% for type in work.role.split "," %>
