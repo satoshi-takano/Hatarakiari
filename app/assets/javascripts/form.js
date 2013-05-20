@@ -23,3 +23,7 @@ function chosen(e) {
     $clone.find("input").bind("change", chosen);
     $image_fields.append($clone);
 }
+
+$("#submit_button").bind("click", function() {
+    $("form").submit();
+})

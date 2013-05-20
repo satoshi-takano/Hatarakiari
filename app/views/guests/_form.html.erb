@@ -6,7 +6,7 @@
 
   <ul>
     <% @guest.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
+    <li>- <%= msg %></li>
     <% end %>
   </ul>
 </div>
@@ -22,7 +22,12 @@
   <%= f.password_field :login_password %>
 </div>
 <div class="actions">
-  <%= f.submit %>
+  <div class="btn" id="submit_button">Submit</div>
+  <script type="text/javascript">
+    $("#submit_button").bind("click", function() {
+      $("form").submit();
+    })
+  </script>
 </div>
 
 <% end %>

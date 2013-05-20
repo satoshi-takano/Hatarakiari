@@ -1,5 +1,4 @@
 <div id="container">
-  <p id="notice"><%= notice %></p>
 
   <div class="row">
     <div class="span12">
@@ -56,7 +55,13 @@
       
     </div>
   </div>
-  
-  <%= link_to 'Back', :back, :class=>"back" %>
+
+  <div class="links">
+    <%= link_to 'Back', (current_user ? works_path : user_path(current_guest.user_id)), :class=>"back" %>
+    <% if current_user %>
+    | <%= link_to 'Edit', edit_work_path(work) %>
+    | <%= link_to 'Delete', work,  :method=>:delete, :data=>{:confirm=>"Are you sure?"} %>
+    <% end %>    
+  </div>
   
 </div>

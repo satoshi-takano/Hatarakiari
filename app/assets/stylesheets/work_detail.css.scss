@@ -1,4 +1,4 @@
-$content-margin-top: 50px;
+$content-margin-top: 40px;
 
 #container {
     margin-top: 60px;
@@ -24,6 +24,7 @@ $content-margin-top: 50px;
             font-size: 14px;
             color: #000;
             margin-top: $content-margin-top;
+            margin-bottom: 8px;
         }
 
         p {
@@ -42,7 +43,7 @@ $content-margin-top: 50px;
         border-radius: 2px;
     }
 
-    .back {
+    .links {
         font-size: 14px;
     }
 }

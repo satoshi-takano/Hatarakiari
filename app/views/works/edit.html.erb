@@ -1,6 +1,14 @@
-<h1>Editing work</h1>
+<%= render :partial => "sessions/header" if current_user %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "header", :media=>"all" %>
+<% end %>
 
-<%= render 'form' %>
+<div id="container">
 
-<%= link_to 'Show', @work %> |
-<%= link_to 'Back', works_path %>
+  <%= render 'form' %>
+
+  <span class="links"><%= link_to 'Back', works_path %></span>
+
+</div>
+
+<%= stylesheet_link_tag "work_new.css.scss" %>
