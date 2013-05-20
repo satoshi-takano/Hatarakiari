@@ -1,5 +1,38 @@
 <% content_for :head do %>
 <%= stylesheet_link_tag "guests", :media=>"all" %>
+<%= javascript_include_tag "guests" %>
+<script type="text/javascript">
+  $(function() {
+    var inputs = $(".input");
+    var notices = $(".notice");
+    inputs.each(function(i) {
+        this._notice = $(notices[i]);
+        this._latestValue = this.value;
+    });
+    inputs.bind("blur", function() {
+        var _this = this;
+
+        if (this._latestValue == this.value) return;
+        
+        $.ajax({
+            type: "PUT",
+            url: this.id,
+            data: "memo=" + this.value,
+            dataType: "text",
+            success: function(res) {
+                _this._notice.text("Saved.");
+                setTimeout(function() {_this._notice.text("")}, 3000);
+                _this._latestValue = _this.value;
+            },
+            error:function(e) {
+                _this._notice.addClass("error");
+                _this._notice.text(e.statusText)
+                setTimeout(function() {_this._notice.text("")}, 3000);
+            }
+        });
+    })
+})
+</script>
 <% end %>
 
 <div id="content-header">
@@ -18,6 +51,11 @@
 <ul id="guests">
   <li><span class="index first">ID / PW</li>
   <% c = 0; @guests.each do |guest| %>
-  <li><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"Are you sure?"} %></li>
+  <li>
+    <p><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"Are you sure?"} %></p>
+    <div class="p2">
+      <span class="memo">Memo : </span><input type="text" name="memo" value="<%= guest.memo %>" class="input" id="<%= guest_path(guest) %>"/><span class="notice"></span>
+    </div>
+  </li>
   <% end %>
 </ul>

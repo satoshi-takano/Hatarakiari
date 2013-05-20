@@ -30,6 +30,12 @@ class GuestsController < ApplicationController
     end
   end
 
+  def update
+    guest = Guest.find(params[:id])
+    guest.update_attributes(:memo=>params[:memo])
+    render :text=>guest.memo
+  end
+
   def edit
   end
 
