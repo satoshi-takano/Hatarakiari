@@ -1,7 +1,13 @@
 <style type="text/css">
   body {
   margin-top: 40px;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
+  }
+
+  h2 {
+  font-size: 22px;
+  color: #3c3c3c;
+
   }
 
   .form-signin {
@@ -45,7 +51,7 @@
   <%= hidden_field_tag "user_id", @user_id %>
   <%= text_field_tag "guest_id", "", :placeholder => "ID", :class=>"input-block-level" %>
   <%= password_field nil, :password, :placeholder => "Password", :class=>"input-block-level" %>
-  <%= button_tag "Sign in", :class=>"btn btn-large btn-primary" %>
+  <%= button_tag "Sign in", :class=>"btn btn-large btn-block" %>
   <% end %>
   
 </div> <!-- /container -->

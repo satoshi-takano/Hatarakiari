@@ -111,3 +111,21 @@ body {
 .links {
     font-size: 14px;
 }
+
+#footer {
+    margin-top: 50px;
+    position: relative;
+    display: block;
+    bottom: 0;
+
+    li {
+        float: left;
+        font-size: 12px;
+        margin-right: 14px;
+        font-family: Helvetica;
+
+        a {
+            color: #888888;
+        }
+    }
+}

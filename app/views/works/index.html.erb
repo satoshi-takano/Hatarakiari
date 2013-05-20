@@ -1,50 +1,45 @@
-<%= render :partial => "sessions/header" if current_user %>
 <% content_for :head do %>
 <%= stylesheet_link_tag "works", :media=>"all" %>
-<%= stylesheet_link_tag "header", :media=>"all" if current_user%>
 <% end %>
 
-<div id="container">
-  <% if current_user %>
-  <div id="content-header">
-    <h2><%= current_user.name %>'s works</h2>
-    <div>
-      <a href="<%= new_work_url %>" class="add"><%= image_tag "/assets/common/add.png" %><span>New work</span></a>
-    </div>
-  </div>
-  <% end %>
-
-  <% if @years.empty? %>
-  <!-- <span class="label" id="nowork">No work</span> -->
-  <h2 id="nowork">Empty</h2>
-  <% end %>
-  
+<% if current_user %>
+<div id="content-header">
+  <h2><%= current_user.name %>'s works</h2>
   <div>
-    <!-- each years -->
-    <% for works in @years %>
-    <h2><%= works[0].year %></h2>
-    
-    <ul class="thumbnails">
-      <!-- each works in the year-->
-      <% for work in works %>
-      <li class="span4">
-        <div class="thumbnail">
-          <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url(:thumb) %></a>
-          <div class="caption">
-            <h4><%= work.name %></h4>
-            <% for type in work.role.split "," %>
-            <span class="label"><%= type %></span>
-            <% end %>
-            <p>
-              <a href="<%= '/works/' + work.id.to_s %>" class="btn btn-block">Detail</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-
-    <% end %>
+    <a href="<%= new_work_url %>" class="add"><%= image_tag "/assets/common/add.png" %><span>New work</span></a>
   </div>
- 
+</div>
+<% end %>
+
+<% if @years.empty? %>
+<!-- <span class="label" id="nowork">No work</span> -->
+<h2 id="nowork">Empty</h2>
+<% end %>
+
+<div>
+  <!-- each years -->
+  <% for works in @years %>
+  <h2><%= works[0].year %></h2>
+  
+  <ul class="thumbnails">
+    <!-- each works in the year-->
+    <% for work in works %>
+    <li class="span4">
+      <div class="thumbnail">
+        <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url(:thumb) %></a>
+        <div class="caption">
+          <h4><%= work.name %></h4>
+          <% for type in work.role.split "," %>
+          <span class="label"><%= type %></span>
+          <% end %>
+          <p>
+            <a href="<%= '/works/' + work.id.to_s %>" class="btn btn-block">Detail</a>
+          </p>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+
+  <% end %>
 </div>

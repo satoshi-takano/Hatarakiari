@@ -14,6 +14,8 @@ Hatarakiari::Application.routes.draw do
   match "/users/:user_id" => "users#show_works", :as=>"user"
 
   match "/logout" => "application#logout"
+
+  match "/:action" => "static_pages#:action"
   
   resources :works
   resources :guests
