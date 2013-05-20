@@ -5,16 +5,24 @@
 <% end %>
 
 <div id="container">
-  <h2>Guests</h2>
+  <div id="content-header">
+    <h2><%= current_user.name %>'s guests</h2>
+    <div>
+      <a href="<%= new_guest_url %>" class="add"><%= image_tag "/assets/common/add.png" %><span>New guest</span></a>
+    </div>
+  </div>
 
-  <ul>
+  <% if @guests.empty? %>
+  <!-- <span class="label" id="nowork">No work</span> -->
+  <h2 id="noguest">Empty</h2>
+  <% end %>
+
+
+  <ul id="guests">
+    <li><span class="index first">ID / PW</li>
     <% c = 0; @guests.each do |guest| %>
-    <li><%= (c += 1) %>. <%= guest.login_id %></li>
+    <li><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"Are you sure?"} %></li>
     <% end %>
   </ul>
-
-  <br />
-
-  <%= link_to "New guest", new_guest_path %>
   
 </div>
