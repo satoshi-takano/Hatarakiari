@@ -4,8 +4,7 @@
   <title>Hatarakiari</title>
   <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap-responsive.min.css", :media => "all" %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>  
-  <%= stylesheet_link_tag "header", :media=>"all"%>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   
   <%= yield :head %>
   
@@ -16,7 +15,6 @@
 
 <body>
 
-  <%= render :partial => "shared/header"%>
   <%= yield :before_container %>
   
   <div id="container">

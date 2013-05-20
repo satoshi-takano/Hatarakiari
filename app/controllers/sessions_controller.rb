@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  layout "noheader"
+  
   def index
     if current_user
       redirect_to works_url
