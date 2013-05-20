@@ -1,57 +1,25 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag "sessions" %>
+<% end %>
 <style type="text/css">
-  body {
-  margin-top: 40px;
-  background-color: #fafafa;
-  }
-
-  h2 {
-  font-size: 22px;
-  color: #3c3c3c;
-
-  }
-
-  .form-signin {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  }
-  .form-signin .form-signin-heading,
-  .form-signin .checkbox {
-  margin-bottom: 10px;
-  }
-  .form-signin input[type="text"],
-  .form-signin input[type="password"] {
-  font-size: 16px;
-  height: auto;
-  margin-bottom: 15px;
-  padding: 7px 9px;
-  }
+  
 
 </style>
 
-<div class="container">
-  <% if defined? @has_error %>
-  <div class="alert alert-error">
-    <% for e in @errors %>
-    <strong>-</strong> <%= e %><br />
-    <% end %>
-  </div>
-  <% end %>
 
-  <%= form_tag("#{user_path(@user_id)}/guest_authentication", {:class=>"form-signin"}) do |f| %>
-  <h2 class="form-signin-heading">Please sign in</h2>
-  <%= hidden_field_tag "user_id", @user_id %>
-  <%= text_field_tag "guest_id", "", :placeholder => "ID", :class=>"input-block-level" %>
-  <%= password_field nil, :password, :placeholder => "Password", :class=>"input-block-level" %>
-  <%= button_tag "Sign in", :class=>"btn btn-large btn-block" %>
+<% if defined? @has_error %>
+<div class="alert alert-error">
+  <% for e in @errors %>
+  <strong>-</strong> <%= e %><br />
   <% end %>
-  
-</div> <!-- /container -->
+</div>
+<% end %>
+
+<%= form_tag("#{user_path(@user_id)}/guest_authentication", {:class=>"form-signin"}) do |f| %>
+<h2 class="form-signin-heading">Please sign in</h2>
+<%= hidden_field_tag "user_id", @user_id %>
+<%= text_field_tag "guest_id", "", :placeholder => "ID", :class=>"input-block-level" %>
+<%= password_field nil, :password, :placeholder => "Password", :class=>"input-block-level" %>
+<%= button_tag "Sign in", :class=>"btn btn-large btn-block" %>
+<% end %>
+

@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  layout "guest_page"
-
   include WorksHelper
   
   before_filter :require_guest, :only=>[:show_works, :show_work]
