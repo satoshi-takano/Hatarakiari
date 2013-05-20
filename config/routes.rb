@@ -15,10 +15,11 @@ Hatarakiari::Application.routes.draw do
 
   match "/logout" => "application#logout"
 
-  match "/:action" => "static_pages#:action"
-  
   resources :works
   resources :guests
+
+  # static pages
+  match "/:action" => "static_pages#:action"
 
   # resources :works, :shallow => true do
   #   resources :guests

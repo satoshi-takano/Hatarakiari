@@ -21,7 +21,7 @@ $content-margin-top: 40px;
         }
 
         h5 {
-            font-size: 14px;
+            font-size: 12px;
             color: #000;
             margin-top: $content-margin-top;
             margin-bottom: 8px;
@@ -36,14 +36,14 @@ $content-margin-top: 40px;
             margin-top: $content-margin-top;
             margin-bottom: 10px;
         }
+        .description + p {
+            margin-bottom: 10px;
+        }
     }
 
     .span7 {
         border: 1px solid #d7d7d7;
         border-radius: 2px;
-    }
 
-    .links {
-        font-size: 14px;
     }
 }
