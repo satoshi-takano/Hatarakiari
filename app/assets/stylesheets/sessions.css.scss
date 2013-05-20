@@ -21,8 +21,10 @@
     width: 280px;
     text-align: center;
 
-    #logo {
+    #logo + p{
         margin-bottom: 60px;
+        color: #888888;
+        margin-top: 10px;
     }
 
     #sns {
