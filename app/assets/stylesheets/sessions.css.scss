@@ -25,7 +25,7 @@
         margin-bottom: 60px;
     }
 
-    ul {
+    #sns {
         margin: 0;
         margin-top: 10px;
         width: 280px;
@@ -42,12 +42,33 @@
     }
 
     .share {
-        margin-top: 120px;
+        $li-w: 100px;
+        margin-left: -20px;
+        margin-top: 50px;
+        width: $li-w * 3 + 10px * 3;
+        li {
+            float: left;
+            margin-left:10px;
+            width: $li-w;
+        }
+        li.twitter {
+            margin-right: -25px;
+        }
+    }
+
+    .clear {
+        color: #fdfdfd;
     }
 }
 
 body {
     background-color: #fafafa;
+    .space {
+        width: 300px;
+        position:relative;
+        display: block;
+        color: #fdfdfd;
+    }
 }
 
 h2 {
