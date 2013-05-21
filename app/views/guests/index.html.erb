@@ -2,42 +2,47 @@
 <%= stylesheet_link_tag "guests", :media=>"all" %>
 <%= javascript_include_tag "guests" %>
 <script type="text/javascript">
-  $(function() {
-    var inputs = $(".input");
-    var notices = $(".notice");
-    inputs.each(function(i) {
-        this._notice = $(notices[i]);
-        this._latestValue = this.value;
-    });
-    inputs.bind("blur", function() {
-        var _this = this;
-
-        if (this._latestValue == this.value) return;
+    $(function() {
+        var forms = $("form");
+        var inputs = $(".memo_field");
+        var notices = $(".notice");
         
-        $.ajax({
-            type: "PUT",
-            url: this.id,
-            data: "memo=" + this.value,
-            dataType: "text",
-            success: function(res) {
-                _this._notice.text("Saved.");
-                setTimeout(function() {_this._notice.text("")}, 3000);
-                _this._latestValue = _this.value;
-            },
-            error:function(e) {
-                _this._notice.addClass("error");
-                _this._notice.text(e.statusText)
-                setTimeout(function() {_this._notice.text("")}, 3000);
-            }
+        inputs.each(function(i) {
+            this._form = $(forms[i]);
+            this._form._id = i;
+            this._notice = $(notices[i]);
+            this._latestValue = this.value;
         });
-    })
+        
+        inputs.bind("blur", function() {
+            if (this._latestValue == this.value) return;
+            this._form.submit();
+        })
+
+        $("form").on("ajax:complete", function(e, xhr, st){
+            var input = $(this).find(".memo_field")[0];
+
+            if (xhr.status == 200) {
+                var data = JSON.parse(xhr.responseText);
+                if (!data["error"])
+                    input._notice.text("Saved.").removeClass("error");
+                else 
+                    input._notice.text(data.errors.memo[0]).addClass("error");
+
+                input._latestValue = input.value;
+            } else {
+                input._notice.text(xhr.statusText).addClass("error");
+            }
+            setTimeout(function() {input._notice.text("")}, 3000);
+        })
+        
 })
 </script>
 <% end %>
 
 <div id="content-header">
   <h2><%= current_user.name %>'s guests</h2>
-  <div>
+  <div class="right">
     <a href="<%= new_guest_url %>" class="add"><%= image_tag "/assets/common/add.png" %><span>New guest</span></a>
   </div>
 </div>
@@ -53,9 +58,12 @@
   <% c = 0; @guests.each do |guest| %>
   <li>
     <p><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"Are you sure?"} %></p>
+    <%= form_for guest, :url=>{:action=>"update", :id=>guest.id}, :remote=>true do |f| %>
     <div class="p2">
-      <span class="memo">Memo : </span><input type="text" name="memo" value="<%= guest.memo %>" class="input" id="<%= guest_path(guest) %>"/><span class="notice"></span>
+      <span class="memo">Memo : </span><%= f.text_field :memo, :class=>"memo_field" %><span class="notice"></span>
     </div>
+    <% end %>
   </li>
   <% end %>
 </ul>
+

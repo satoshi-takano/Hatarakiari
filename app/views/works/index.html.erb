@@ -1,13 +1,35 @@
 <% content_for :head do %>
 <%= stylesheet_link_tag "works", :media=>"all" %>
+<%= stylesheet_link_tag "bootstrap-modal", :media=>"all" %>
+<%= javascript_include_tag "bootstrap-modal" %>
+<%= javascript_include_tag "bootstrap-modalmanager" %>
+<% end %>
+
+<% content_for :before_container do %>
+<!-- Modal -->
+<div id="guest_chooser" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">ゲストを選んでください</h3>
+  </div>
+  <div class="modal-body">
+    <% current_user.guests.each do |g| %>
+    <p>One</p>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">閉じる</button>
+  </div>
+</div>
 <% end %>
 
 <% if current_user %>
 <div id="content-header">
   <h2><%= current_user.name %>'s works</h2>
-  <div>
+  <div class="right">
     <a href="<%= new_work_url %>" class="add"><%= image_tag "/assets/common/add.png" %><span>New work</span></a>
   </div>
+  <a href="#guest_chooser" role="button" data-toggle="modal"><div class="btn btn-small">このページをゲストに教える</div></a>
 </div>
 <% end %>
 
@@ -26,7 +48,9 @@
     <% for work in works %>
     <li class="span4">
       <div class="thumbnail">
-        <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url(:large) %></a>
+        <div class="image">
+          <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url(:large) %></a>
+        </div>
         <div class="caption">
           <h4><%= work.name %></h4>
           <% for type in work.role.split "," %>

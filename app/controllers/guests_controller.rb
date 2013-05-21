@@ -32,8 +32,11 @@ class GuestsController < ApplicationController
 
   def update
     guest = Guest.find(params[:id])
-    guest.update_attributes(:memo=>params[:memo])
-    render :text=>guest.memo
+    if guest.update_attributes(params[:guest])
+      render :json=>{ :memo=>guest.memo }
+    else
+      render :json=>{ :error=>true, :errors=>guest.errors.messages }.to_json
+    end
   end
 
   def edit

@@ -4,4 +4,5 @@ class Guest < ActiveRecord::Base
   attr_accessible :login_id, :login_password, :user_id, :memo
   validates_presence_of :login_id, :login_password, :user_id
   validates_numericality_of :user_id
+  validates :memo, :length => { :maximum => 140}
 end

@@ -5,11 +5,11 @@
   <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap-responsive.min.css", :media => "all" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>  
-  <%= stylesheet_link_tag "header", :media=>"all"%>
-  
-  
+  <%= stylesheet_link_tag    "header", :media=>"all"%>
   
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap.min" %>
+  
   <%= yield :head %>
   
   <%= csrf_meta_tags %>

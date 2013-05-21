@@ -1,7 +1,10 @@
 var $image_fields = $("#image_selector");
-$($image_fields.find("input")[0]).bind("change", chosen);
+$($image_fields.find("input")[0]).bind("change", chosen)[0]._index = 0;
+
 
 function chosen(e) {
+    if (e.currentTarget._index == 4) return;
+    
     $(e.currentTarget).unbind("change", chosen);
     
     var $selectors = $image_fields.find("div");
@@ -20,10 +23,14 @@ function chosen(e) {
     input.attr("id", id);
 
     $clone.find("label").text("Image " + idx);
-    $clone.find("input").bind("change", chosen);
+    $clone.find("input").bind("change", chosen)[0]._index = idx;
     $image_fields.append($clone);
 }
 
 $("#submit_button").bind("click", function() {
+    if ($("#work_name")[0].value.length == 0) {
+        alert("Name can't be blank");
+        return;
+    }
     $("form").submit();
 })

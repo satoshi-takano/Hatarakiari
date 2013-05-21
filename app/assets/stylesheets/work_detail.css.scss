@@ -4,8 +4,20 @@ $content-margin-top: 40px;
     margin-top: 60px;
 
     .row {
+        margin-bottom: 20px;
+        .carousel {margin-bottom: 0;}
+        .carousel-inner {
+            .image {
+                margin-left:auto;
+                margin-right: auto;
+                position: absolute;
+            }
+            .blank{
 
+            }
+        }
     }
+    
 
     h2 {
         font-size: 24px;
