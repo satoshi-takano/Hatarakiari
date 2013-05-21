@@ -3,6 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#guest_chooser {
+    font-size: 14px;
+
+    #tellinfo {
+        margin-left: 10px;
+        color: #3c3c3c;
+        margin-top: 10px;
+        border: 1px solid #aaaaaa;
+        padding: 10px;
+
+        p {margin-bottom: 8px;}
+    }
+
+    ul.nav {
+        margin-bottom: 10px;
+    }
+    
+    li {
+        .memo {
+            color: #888888;
+            float:right;
+        }
+    }
+}
+
 #container {
 
     h2 {

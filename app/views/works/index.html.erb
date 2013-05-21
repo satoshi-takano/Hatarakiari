@@ -3,6 +3,27 @@
 <%= stylesheet_link_tag "bootstrap-modal", :media=>"all" %>
 <%= javascript_include_tag "bootstrap-modal" %>
 <%= javascript_include_tag "bootstrap-modalmanager" %>
+<script type="text/javascript">
+    $(function() {
+        var list = $(".nav > li");
+        var selected = null;
+        var loginID = $("#login_id");
+        var loginPw = $("#login_password");
+
+        list.bind("click", function(e) {
+            if (selected) selected.removeClass("active");
+            selected = $(this);
+            selected.addClass("active");
+            var ipass = selected.text();
+            var match = /(.*?)\s\/\s(.*?)\s/.exec(ipass);
+            loginID.text("ID : " + match[1]);
+            loginPw.text("Password : " + match[2]);
+
+            e.preventDefault();
+            return false;
+        })
+    })
+</script>
 <% end %>
 
 <% content_for :before_container do %>
@@ -13,9 +34,17 @@
     <h3 id="myModalLabel">ゲストを選んでください</h3>
   </div>
   <div class="modal-body">
+    <ul class="nav nav-pills nav-stacked">
     <% current_user.guests.each do |g| %>
-    <p>One</p>
+    <li class=""><a href="#"><%= g.login_id %> / <%= g.login_password %> <span class="memo"><%= g.memo %></span></a></li>
     <% end %>
+    </ul>
+    <div id="tellinfo">
+      <p>ポートフォリオのURL</p>
+      <p id="works_page"><%= user_url(current_user) %></p>
+      <p id="login_id">ID : <span class="value">hoge</span></p>
+      <p id="login_password">Password : <span class="value">hoge</span></p>
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">閉じる</button>
