@@ -1,3 +1,7 @@
+<% content_for :title do %>
+<%= @work.name %>
+<%  end %>
+
 <% content_for :head do %>
 <%= stylesheet_link_tag "work_detail", :media=>"all" %>
 <% end %>
