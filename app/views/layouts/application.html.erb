@@ -2,6 +2,8 @@
 <html>
 <head>
   <title><%= yield :title %></title>
+  <%= render :partial=>"shared/meta" %>
+  
   <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap-responsive.min.css", :media => "all" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>  

@@ -58,7 +58,9 @@
 
 
 <ul id="guests">
+  <% if 0 < @guests.length %>
   <li><span class="index first">ID / PW</li>
+  <% end %>
   <% c = 0; @guests.each do |guest| %>
   <li>
     <p><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"Are you sure?"} %></p>
