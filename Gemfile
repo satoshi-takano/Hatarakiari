@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'mysql2'
 
 
 # Gems used only for assets and not required
@@ -31,9 +32,6 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
 # To use debugger
 # gem 'debugger'
 
@@ -43,3 +41,11 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 
 gem "paperclip", "~> 3.0"
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-rbenv'
+end
+
+gem 'therubyracer'
