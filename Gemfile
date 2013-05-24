@@ -40,7 +40,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 
-gem "paperclip", "~> 3.0"
+gem 'paperclip', '~>3.4.2'
+gem "aws-sdk"
 
 group :development do
   gem 'capistrano'
