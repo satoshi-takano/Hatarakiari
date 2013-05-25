@@ -18,12 +18,20 @@ $border-color: #eaeaea;
 
         .avatar {
             float: left;
+            margin-right: 8px;
+        }
+
+        .user_name {
+            font-size: 12px;
+            margin-top: 6px;
+            float: left;
+            color: #888888;
+            font-family: Helvetica;
         }
         
         a {
             font-size: 12px;
             color: #3c3c3c;
-            
         }
 
         // <dropdown

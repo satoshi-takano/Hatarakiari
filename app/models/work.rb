@@ -18,6 +18,19 @@ class Work < ActiveRecord::Base
   validates_attachment_presence :image_0
   validates_attachment_content_type :image_0, :image_1, :image_2, :image_3, :image_4, :content_type => %w{ image/jpeg image/png image/gif }
 
+  after_initialize :init
+
+  def init
+    self.year ||= Time.now.year
+  end
+
+  def url=(u)
+    unless /(?:http:\/\/)|(?:https:\/\/)/
+      u = "http://" + u
+    end
+    write_attribute(:url, u)
+  end
+  
   def thumbnail_url
     "/images/" + self.id.to_s + "/thumbnail.png"
   end

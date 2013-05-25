@@ -27,7 +27,7 @@
         for y in (now - 10)..now
           years << y
         end;
-        f.select :year, years, :selected=>now %>
+        f.select :year, years, :selected=>@work.year %>
   </div>
   <div class="field">
     <%= f.label "Role (comma-separated values)" %>
