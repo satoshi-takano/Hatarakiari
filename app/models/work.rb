@@ -27,7 +27,7 @@ class Work < ActiveRecord::Base
   end
 
   def url=(u)
-    unless /(?:http:\/\/)|(?:https:\/\/)/
+    unless /(?:http:\/\/)|(?:https:\/\/)/ =~ u
       u = "http://" + u
     end
     write_attribute(:url, u)
