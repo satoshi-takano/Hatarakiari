@@ -41,8 +41,11 @@
   </div>
   <div class="modal-body">
     <ul class="nav nav-pills nav-stacked">
-      <% current_user.guests.each do |g| %>
+      <% guests = current_user.guests; guests.each do |g| %>
       <li class=""><a href="#"><%= g.login_id %> / <%= g.login_password %> <span class="memo"><%= g.memo %></span></a></li>
+      <% end %>
+      <% if guests.empty? %>
+      <a href="<%= new_guest_path %>">> Guestを登録してください</a>
       <% end %>
     </ul>
     <div id="tellinfo">
@@ -71,7 +74,7 @@
 
 <% if @years.empty? %>
 <!-- <span class="label" id="nowork">No work</span> -->
-<h2 id="nowork">Workがありません</h2>
+<h2 id="nowork">0 Works</h2>
 <% end %>
 
 <div>

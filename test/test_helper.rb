@@ -10,4 +10,16 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def login(user)
+    old_controller = @controller
+    @controller = SessionsController.new
+
+    auth = { :provider=>"github", :uid=>user.uid, :info=>{ :nickname=>"test", :image=>"https://si0.twimg.com/profile_images/1736689431/nuko.png" } }
+    @request.env["omniauth.auth"] = auth;
+    @request.session["user_id"] = users(:one).id
+    get :callback, { :provider=>"github"}
+    
+    @controller = old_controller
+  end
 end

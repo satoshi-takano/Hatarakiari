@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_guest
 
-  http_basic_authenticate_with :name => "ikke", :password => "var"
+  http_basic_authenticate_with :name => "ikke", :password => "var" unless (Rails.env == 'test')
 
   def logout
     admin_logout

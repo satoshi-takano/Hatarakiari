@@ -7,4 +7,5 @@ class Guest < ActiveRecord::Base
   validates_length_of :login_id, :in => 1..32
   validates_length_of :login_password, :in => 6..32
   validates :memo, :length => { :maximum => 140}
+  
 end

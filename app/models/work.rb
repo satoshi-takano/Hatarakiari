@@ -9,7 +9,6 @@ class Work < ActiveRecord::Base
   has_attached_file :image_2, params_for_attachements
   has_attached_file :image_3, params_for_attachements
   has_attached_file :image_4, params_for_attachements
-  p params_for_attachements
   
   attr_accessible :client, :description, :name, :private_work, :role, :url, :year, :user_id, :image_0, :image_1, :image_2, :image_3, :image_4
   
@@ -27,8 +26,10 @@ class Work < ActiveRecord::Base
   end
 
   def url=(u)
-    unless /(?:http:\/\/)|(?:https:\/\/)/ =~ u
-      u = "http://" + u
+    if 0 < u.length
+      unless /(?:http:\/\/)|(?:https:\/\/)/ =~ u
+        u = "http://" + u
+      end
     end
     write_attribute(:url, u)
   end

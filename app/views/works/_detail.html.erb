@@ -3,7 +3,7 @@
     <div class="span4">
       <h2><%= work.name %></h2>
       <% if work.url %>
-      <a href="<%= work.url %>" class="small"><%= work.parsed_url %></a><%= work.url_article %>
+      <a href="<%= work.url %>" class="small" target="blank"><%= work.parsed_url %></a><%= work.url_article %>
       <% end %>
 
       <% if 0 < work.client.length %>

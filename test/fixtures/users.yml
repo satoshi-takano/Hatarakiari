@@ -1,11 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 123        
   name: MyString
   uid: MyString
-  provider: MyString
+  provider: github
 
 two:
   name: MyString
   uid: MyString
-  provider: MyString
+  provider: twitter

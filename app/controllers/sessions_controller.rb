@@ -8,15 +8,18 @@ class SessionsController < ApplicationController
   end
 
   def callback
-    create
+    login(request.env["omniauth.auth"])
   end
 
-  def create
-    auth = request.env["omniauth.auth"]
+  def login(auth)
     user = User.find_by_uid_and_provider(auth[:uid], auth[:provider]) || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
+    admin_login(user)
     guest_logout
     redirect_to root_url, :notice => "Signed in."
+  end
+
+  def admin_login(user)
+    session[:user_id] = user.id
   end
 
   def destroy
