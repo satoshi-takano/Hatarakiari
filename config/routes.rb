@@ -10,7 +10,7 @@ Hatarakiari::Application.routes.draw do
   root :to => "sessions#index"
 
   match "/users/:user_id/guest_authentication" => "users#guest_authentication"
-  match "/users/:user_id/works/:work_id" => "users#show_work"
+  match "/users/:user_id/works/:work_id" => "users#show"
   match "/users/:user_id" => "users#show_works", :as=>"user"
 
   match "/logout" => "application#logout"

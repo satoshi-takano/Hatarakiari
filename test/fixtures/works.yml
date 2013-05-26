@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  client: MyString
-  year: 9.99
-  role: MyString
-  description: MyText
-  private_work: false
-  url: MyString
+  name: first
+  client: first_client
+  role: mobile
+  description: foo
+  url: example.com
 
 two:
   name: MyString

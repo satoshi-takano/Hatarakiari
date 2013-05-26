@@ -8,14 +8,13 @@ class UsersController < ApplicationController
     render "works/index"
   end
 
-  def show_work
+  def show
     @work = Work.find_by_user_id_and_id(current_guest.user_id, params[:work_id])
     if @work
       render "works/show"
     else
       redirect_to user_path(current_guest.user_id)
     end
-
   end
 
   def guest_authentication
