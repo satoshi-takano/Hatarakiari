@@ -10,7 +10,7 @@ $content-margin-top: 40px;
             .image {
                 margin-left:auto;
                 margin-right: auto;
-                position: absolute;
+//                position: absolute;
             }
             .blank{
 
@@ -26,8 +26,9 @@ $content-margin-top: 40px;
         margin-bottom: 5px;
     }
 
-    .span4 {
+    .span5 {
         margin-left: 0;
+        padding-right: 20px;
         
         .small {
             font-size: 12px;
@@ -45,18 +46,23 @@ $content-margin-top: 40px;
             color: #464646;
         }
 
+        a {
+            word-break: break-all;
+        }
+
         .description {
             margin-top: $content-margin-top;
             margin-bottom: 10px;
         }
         .description + p {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
     }
 
     .span7 {
         border: 1px solid #d7d7d7;
         border-radius: 2px;
-
+        background: #fff;
+        margin-bottom: 20px;
     }
 }
