@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130520125836) do
     t.integer  "year"
     t.string   "role"
     t.text     "description"
-    t.boolean  "private_work"
+    t.boolean  "personal_work"
     t.string   "url"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false

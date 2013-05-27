@@ -6,7 +6,7 @@ class CreateWorks < ActiveRecord::Migration
       t.integer :year
       t.string :role
       t.text :description
-      t.boolean :private_work
+      t.boolean :personal_work
       t.string :url
 
       t.timestamps

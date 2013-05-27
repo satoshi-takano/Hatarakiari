@@ -47,10 +47,24 @@
             box-shadow: 0 0 0 0;
         }
     }
+
     
+    .personal-label {
+        position: absolute;
+        right:10px;
+        top: 10px;
+        background-color: rgba(0, 196, 170, 0.4);
+        color: #fff;
+    }
 
     .thumbnail {
-        .image {text-align: center;}
+        padding: 0;
+        
+        .image {
+            text-align: center;
+            height: 100%;
+            position: relative;
+        }
         h4 {
             font-size: 18px;
             color: #3c3c3c;

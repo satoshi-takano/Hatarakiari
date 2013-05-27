@@ -9,11 +9,16 @@ h1 {
     color: #3f3f3f;
     margin-bottom: 20px;
 }
+p {
+    margin-bottom: 10px;
+}
+
 </style>
 <% end %>
 
 <h1>hatarakiについて</h1>
 <p>hatarakiはクリエーターのための鍵付きポートフォリオサービスです。<br/>
 仕事、プライベートで制作したものを記録して人に見せたい。でも、不特定多数に無条件で公開されてしまうのは都合が悪い。<br/>
-hatarakiはそんなニーズを満たすためのサービスです。<br/>
-またhatarakiはオープンソース・ソフトウェアとして<a href="https://github.com/satoshi-takano/hataraki">GitHub</a>で公開されています。</p>
+hatarakiはそんなニーズを満たすためのサービスです。</p>
+<p>hatarakiを使うと、例えば<a href="/users/1<%= '?id=guest01&pass=i_am_a_guest' if current_guest == nil%>">このページ</a><span class="bold">のようなポートフォリオを、特定のゲストにだけ公開出来ます。 </p>
+<p>またhatarakiはオープンソース・ソフトウェアとして<a href="https://github.com/satoshi-takano/hataraki">GitHub</a>で公開されています。</p>

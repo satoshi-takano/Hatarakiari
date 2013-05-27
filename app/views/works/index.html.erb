@@ -88,7 +88,9 @@
     <li class="span4">
       <div class="thumbnail">
         <div class="image">
-          <a href="<%= '/works/' + work.id.to_s %>"><%= image_tag work.image_0.url(:large) %></a>
+          <a href="<%= '/works/' + work.id.to_s %>">
+            <% if work.personal_work %><span class="label personal-label">Personal work</span><% end %>
+            <%= image_tag work.image_0.url(:large) %></a>
         </div>
         <div class="caption">
           <h4><%= work.name %></h4>
