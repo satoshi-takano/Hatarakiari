@@ -22,7 +22,7 @@ class WorksControllerTest < ActionController::TestCase
     user = users(:one)
     
     assert_difference('Work.count') do
-      post :create, work: { user_id: @user.id, client: @work.client, description: @work.description, name: @work.name, private_work: @work.private_work, role: @work.role, url: @work.url, year: @work.year, image_0: fixture_file_upload("/files/image.gif", "image/gif") }
+      post :create, work: { user_id: @user.id, client: @work.client, description: @work.description, name: @work.name, personal_work: @work.personal_work, role: @work.role, url: @work.url, year: @work.year, image_0: fixture_file_upload("/files/image.gif", "image/gif") }
     end
 
     assert_redirected_to work_path(assigns(:work))
@@ -39,7 +39,7 @@ class WorksControllerTest < ActionController::TestCase
   end
 
   test "should update work" do
-    put :update, id: @work, work: { client: @work.client, description: @work.description, name: @work.name, private_work: @work.private_work, role: @work.role, url: @work.url, year: @work.year }
+    put :update, id: @work, work: { client: @work.client, description: @work.description, name: @work.name, personal_work: @work.personal_work, role: @work.role, url: @work.url, year: @work.year }
   end
 
   test "should destroy work" do

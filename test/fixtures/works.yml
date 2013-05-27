@@ -14,5 +14,5 @@ two:
   year: 9.99
   role: MyString
   description: MyText
-  private_work: false
+  personal_work: false
   url: MyString
