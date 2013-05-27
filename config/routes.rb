@@ -19,7 +19,9 @@ Hatarakiari::Application.routes.draw do
   resources :guests
 
   # static pages
+  match "/404" => "errors#error_404"  
   match "/:action" => "static_pages#:action"
+
 
   # resources :works, :shallow => true do
   #   resources :guests
