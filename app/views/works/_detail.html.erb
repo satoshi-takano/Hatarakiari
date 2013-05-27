@@ -86,7 +86,7 @@
   <%= link_to 'Back', (current_user ? works_path : user_path(current_guest.user_id)), :class=>"back" %>
   <% if current_user %>
   | <%= link_to 'Edit', edit_work_path(work) %>
-  | <%= link_to 'Delete', work,  :method=>:delete, :data=>{:confirm=>"Are you sure?"} %>
+  | <%= link_to 'Delete', work,  :method=>:delete, :data=>{:confirm=>"削除してよろしいですか?"} %>
   <% end %>    
 </div>
 
