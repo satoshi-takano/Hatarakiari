@@ -46,6 +46,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano_colors'
   gem 'capistrano-rbenv'
+  gem 'capistrano-ext'
 end
 
 gem 'therubyracer'
