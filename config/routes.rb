@@ -1,4 +1,4 @@
-Hatarakiari::Application.routes.draw do
+Hataraki::Application.routes.draw do
 
   get "users/show"
 

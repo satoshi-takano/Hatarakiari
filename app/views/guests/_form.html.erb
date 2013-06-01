@@ -25,13 +25,12 @@
   <%= f.label :memo %>
   <%= f.text_field :memo %>
 </div>
-<div class="actions">
-  <div class="btn" id="submit_button">Submit</div>
-  <script type="text/javascript">
+
+<input type="submit" class="btn" id="submit_button" value="Submit"></input>
+<script type="text/javascript">
     $("#submit_button").bind("click", function() {
-      $("form").submit();
+        $("form").submit();
     })
-  </script>
-</div>
+</script>
 
 <% end %>

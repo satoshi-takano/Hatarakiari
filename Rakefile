@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Hatarakiari::Application.load_tasks
+Hataraki::Application.load_tasks

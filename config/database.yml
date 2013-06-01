@@ -25,5 +25,5 @@ production:
   database: hataraki_production
   pool: 5
   username: rails
-  password: railsapp
+  password: secret
   host: localhost
