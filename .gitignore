@@ -19,6 +19,4 @@
 .sass-cache
 database.yml
 deploy.rb
-/config/s3.yml
 /config/deploy/
-/config/mail.yml
