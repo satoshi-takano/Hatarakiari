@@ -9,9 +9,69 @@ h1 {
     color: #3f3f3f;
     margin-bottom: 20px;
 }
+p {
+    margin-bottom: 20px;
+}
+textarea {
+    width:340px;
+}
+#submit {
+    margin-top: 10px;
+    margin-right: 10px;
+    float:left;
+}
+#progress, #status_text {
+    margin-top: 17px;
+    margin-left: 5px;
+}
+#sending_status {
+    display:none;
+}
+#progress {
+    float:left;
+}
+#status_text {
+    display: inline-block;
+    color: #555;
+    margin-bottom:0;
+}
+
 </style>
+<script type="text/javascript">
+  $(function() {
+      var sending = false;
+      $("#submit").bind('click', function(e) {
+          e.preventDefault();
+          if (sending || $("textarea").get()[0].value.length == 0) return;
+          
+          sending = true;
+          $("form").submit();
+          $("#sending_status").css("display", "block");
+          $("#status_text").text("送信中");
+          $("#progress").css("visibility", "visible");
+      })
+      
+      $("form").on("ajax:complete", function(e, xhr, st) {
+          $("#status_text").text("送信しました");
+          $("#progress").css("visibility", "hidden");
+          setTimeout(function() {
+              $("#sending_status").css("display", "none");
+              sending = false;
+          }, 2000);
+      })
+  })
+</script>
 <% end %>
 
 <h1>お問い合わせ</h1>
 
-<p>hatarakiに関してのお問い合わせは<a href="mailto:satoxi.tacano@gmail.com?subject=hatarakiに関しての問い合わせ">こちら</a>まで</p>
+<p>hatarakiに関してご意見・ご質問はこちらからお願いします</p>
+<form method="post" action="/contact" data-remote="true">
+  <textarea name="mail_body" rows="10" cols="25"></textarea><br/>
+  <input type="submit" value="意見を送る" class="btn" id="submit"/>
+  <div id="sending_status">
+      <img src="/assets/common/progress.gif" id="progress" alt="" />
+      <p id="status_text">送信中</p>
+  </div>
+  <div class="clearfix"></div>
+</form>

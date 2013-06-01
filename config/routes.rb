@@ -19,6 +19,7 @@ Hatarakiari::Application.routes.draw do
   resources :guests
 
   # static pages
+  post "/contact" => "static_pages#send_message"
   match "/404" => "errors#error_404"  
   match "/:action" => "static_pages#:action"
 

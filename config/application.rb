@@ -58,5 +58,19 @@ module Hatarakiari
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    mailconf = YAML.load_file("#{Rails.root}" + "/config/mail.yml")["gmail"]
+    config.mailto = mailconf["mailto"]
+    config.action_mailer.delivery_method=:smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true, 
+      :address=>'smtp.gmail.com',
+      :domain=>'hataraki.in',
+      :port=>587,
+      :authentication=>:plain,
+      :user_name=>mailconf["user_name"],
+      :password=>mailconf["password"]
+    }
   end
 end
