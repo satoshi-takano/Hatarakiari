@@ -2,9 +2,8 @@ Hataraki::Application.routes.draw do
 
   get "users/show"
 
+  match "/auth/failure" => "errors#error_401"
   match "/auth/:provider/callback" => "sessions#callback"
-  match "/signout" => "sessions#destroy"
-
   match "/auth" => "sessions#index", :as => :auth
 
   root :to => "sessions#index"
@@ -20,7 +19,8 @@ Hataraki::Application.routes.draw do
 
   # static pages
   post "/contact" => "static_pages#send_message"
-  match "/404" => "errors#error_404"  
+  match "/404" => "errors#error_404"
+  match "/401" => "errors#error_401"
   match "/:action" => "static_pages#:action"
 
 
