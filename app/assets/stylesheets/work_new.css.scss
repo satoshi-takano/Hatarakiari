@@ -10,7 +10,6 @@ label {
         margin-bottom: 10px;
     }
 }
-
 input[type="submit"] {
     margin-top: 10px;
 }
@@ -20,13 +19,11 @@ textarea {
 .span5 {
     margin-bottom: 20px;
 }
-.span7 {
-
-}
 body {
     margin-bottom: 20px;
 }
-
 input[type="file"] {
     line-height: 100%;
+    color: #777;
+    font-size: 12px;
 }
