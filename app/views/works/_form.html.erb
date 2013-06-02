@@ -4,53 +4,65 @@
       <h2><%= pluralize(@work.errors.count, "error") %> prohiited this work from being saved:</h2>
 
       <ul>
-      <% @work.errors.full_messages.each do |msg| %>
+        <% @work.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <%= f.hidden_field :user_id %>
-  <div class="field">
-    <%= f.label "Name *" %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :client %>
-    <%= f.text_field :client %>
-  </div>
-  <div class="field">
-    <%= f.label "Year *" %>
-    <%= years = [];
-        now = Time.now.year
-        for y in (now - 10)..now
-          years << y
-        end;
-        f.select :year, years, :selected=>@work.year %>
-  </div>
-  <div class="field">
-    <%= f.label "Role (カンマ区切りで複数指定可)" %>
-    <%= f.text_field :role %>
-  </div>
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, :size=>"50x5" %>
-  </div>
-  <div class="field">
-    <%= f.label :personal_work %>
-    <%= f.check_box :personal_work %>
-  </div>
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field" id="image_selector">
-    <div>
-      <%= f.file_field :image_0 %>
-    </div>
-  </div>
-  <input class="btn" id="submit_button" value="Submit" type="submit"></input>
+    <%= f.hidden_field :user_id %>
+    <div class="row-fluid">
+      <div class="span12">
+        
+        <div class="span5">
+          <div class="field">
+            <%= f.label "仕事の呼称" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="field">
+            <%= f.label 'クライアント' %>
+            <%= f.text_field :client %>
+          </div>
+          <div class="field">
+            <%= f.label '年' %>
+            <%= years = [];
+                now = Time.now.year
+                for y in (now - 10)..now
+                years << y
+                         end;
+                         f.select :year, years, :selected=>@work.year %>
+                </div>
+          <div class="field">
+            <%= f.label "担当 (カンマ区切りで複数指定可)" %>
+            <%= f.text_field :role %>
+          </div>
+          <div class="field">
+            <%= f.label '個人制作の場合はチェック' %>
+            <%= f.check_box :personal_work %>
+          </div>
+          <div class="field">
+            <%= f.label 'URL' %>
+            <%= f.text_field :url %>
+          </div>
+        </div>
+        
+        <div class="span7">
+          <%= f.label '画像 (640×480 以上を推奨)' %>
+          <div class="field" id="image_selector">
+            <div>
+              <%= f.file_field :image_0 %>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.label '説明' %>
+            <%= f.text_area :description, :size=>"50x8" %>
+          </div>  
+        
+          <input class="btn" id="submit_button" value="Submit" type="submit"></input>      
+        </div>
+        
+      </div>
 
   <%= javascript_include_tag "form" %>
 <% end %>

@@ -20,3 +20,4 @@
 database.yml
 deploy.rb
 /config/deploy/
+/db/seeds/

@@ -5,9 +5,17 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'mysql2'
-
+group :development do
+  gem 'sqlite3'
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-ext'
+end
+group :production do
+  gem 'mysql2'
+  gem 'newrelic_rpm'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,12 +49,4 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 
 gem 'paperclip', '~>3.4.2'
-
-group :development do
-  gem 'capistrano'
-  gem 'capistrano_colors'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-ext'
-end
-
 gem 'therubyracer'

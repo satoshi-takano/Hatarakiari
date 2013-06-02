@@ -2,6 +2,7 @@ label {
     font-size: 14px;
     color: #3c3c3c;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 #image_selector {
@@ -11,9 +12,17 @@ label {
 }
 
 input[type="submit"] {
+    margin-top: 10px;
+}
+textarea {
+    width: 300px;
+}
+.span5 {
     margin-bottom: 20px;
 }
+.span7 {
 
+}
 body {
     margin-bottom: 20px;
 }
