@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :provider, :uid, :avatar_url
 
+  validates_presence_of :name, :provider, :uid, :avatar_url
+
   has_many :works, :dependent=>:delete_all
   has_many :guests, :dependent=>:delete_all
 

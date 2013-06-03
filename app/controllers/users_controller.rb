@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include WorksHelper
   
-  before_filter :require_guest, :only=>[:show_works, :show_work]
+  before_filter :require_guest, :only=>[:show_works, :show]
   
   def show_works
     @years = loadWorksEachYears

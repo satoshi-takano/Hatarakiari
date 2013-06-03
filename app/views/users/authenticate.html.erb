@@ -23,7 +23,7 @@ Sign in
 <%= form_tag("#{user_path(@user_id)}/guest_authentication", {:class=>"form-signin"}) do |f| %>
 <h2 class="form-signin-heading">Please sign in</h2>
 <%= hidden_field_tag "user_id", @user_id %>
-<%= p params[:user_id].to_i == 1;text_field_tag "guest_id", "", :placeholder => "ID", :class=>"input-block-level", :value=>(params[:user_id] == "1" ? params[:id] : "")%>
+<%= text_field_tag "guest_id", "", :placeholder => "ID", :class=>"input-block-level", :value=>(params[:user_id] == "1" ? params[:id] : "")%>
 <%= password_field nil, :password, :placeholder => "Password", :class=>"input-block-level", :value=>(params[:user_id] == "1" ? params[:pass] : "") %>
 <%= button_tag "Sign in", :class=>"btn btn-large btn-block" %>
 <% end %>

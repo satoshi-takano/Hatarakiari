@@ -13,7 +13,7 @@ class Work < ActiveRecord::Base
   attr_accessible :client, :description, :name, :personal_work, :role, :url, :year, :user_id, :image_0, :image_1, :image_2, :image_3, :image_4
   
 
-  validates_presence_of :name, :year, :user_id
+  validates_presence_of :name, :year
   validates_numericality_of :year
 
   validates_attachment_presence :image_0
@@ -34,10 +34,6 @@ class Work < ActiveRecord::Base
     write_attribute(:url, u)
   end
   
-  def thumbnail_url
-    "/images/" + self.id.to_s + "/thumbnail.png"
-  end
-
   def description
     parsed = super
     ms = parsed.scan(/\[(.*?)\]\s?\((.*?)\)/)
@@ -48,14 +44,4 @@ class Work < ActiveRecord::Base
     parsed
   end
 
-  def parsed_url
-    u = url
-    u.gsub(/\(公開終了\)/, "")
-  end
-
-  def url_article
-    u = url
-    u =~ /(\(公開終了\))/
-    $1
-  end
 end

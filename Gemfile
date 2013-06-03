@@ -16,6 +16,11 @@ group :production do
   gem 'mysql2'
   gem 'newrelic_rpm'
 end
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -16,7 +16,7 @@ class GuestsController < ApplicationController
   end
 
   def create
-    @guest = Guest.new(params[:guest])
+    @guest = current_user.guests.build(params[:guest])
     respond_to do |format|
       if @guest.save
         format.html { redirect_to guests_path, notice: 'Guest was successfully created.'; return }
@@ -46,7 +46,7 @@ class GuestsController < ApplicationController
   end
 
   def destroy
-    guest = Guest.find(params[:id])
+    guest = current_user.guests.find(params[:id])
     guest.destroy
 
     redirect_to guests_path
