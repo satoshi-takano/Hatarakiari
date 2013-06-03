@@ -4,12 +4,12 @@ describe GuestsController do
   include Helpers
 
   before do
-    @ghuser = FactoryGirl.create(:github_user)
+    @user = FactoryGirl.create(:github_user)
   end
 
   context 'when user logged in' do
     before do
-      admin_login(@ghuser)
+      admin_login(@user)
       current_user.guests.reset
     end
 
@@ -34,43 +34,45 @@ describe GuestsController do
       it 'should destroy the guest' do
         post :create, :guest=>{ :login_id=>"guest", :login_password=>"secret password", :user_id=>current_user.id }
         post :destroy, :id=>current_user.guests.first.id
-        expect(Guest.find_by_sql('select * from guests where user_id = ' + current_user.id.to_s).length).to eq 0
+        current_user.reload
+        expect(current_user.guests.length).to eq 0
       end
     end
   end
 
   context 'when user does not logged in' do
     describe '#create' do
-      it 'shoud not create a new guest' do
+      it 'shoud not create new guest' do
         expect {
-          post :create, :guest=>{ :login_id=>"guest", :login_password=>"secret password", :user_id=>@ghuser.id }
-        }.not_to change(@ghuser.guests, :length)
+          post :create, :guest=>{ :login_id=>"guest", :login_password=>"secret password", :user_id=>@user.id }
+        }.not_to change(@user.guests, :length)
       end
     end
 
     describe '#update' do
       it 'should not update the memo attribute of the guest' do
-        admin_login(@ghuser)
+        admin_login(@user)
         
         post :create, :guest=>{ :login_id=>"guest", :login_password=>"secret password", :memo=>'memo' }
         expect(current_user.guests.first.memo).to eq 'memo'
 
         logout
         
-        post :update, :id=>@ghuser.id, :guest=>{ :memo=>'updated memo' }
-        expect(@ghuser.guests.first.memo).to eq 'memo'        
+        post :update, :id=>@user.id, :guest=>{ :memo=>'updated memo' }
+        expect(@user.guests.first.memo).to eq 'memo'        
       end
     end
 
     describe '#destroy' do
       it 'should not destroy the guest' do
-        admin_login(@ghuser)
+        admin_login(@user)
         post :create, :guest=>{ :login_id=>"guest", :login_password=>"secret password", :user_id=>current_user.id }
 
         logout
         
-        post :destroy, :id=>@ghuser.guests.first.id
-        expect(Guest.find_by_sql('select * from guests where user_id = ' + @ghuser.id.to_s).length).to eq 1
+        post :destroy, :id=>@user.guests.first.id
+        @user.reload
+        expect(@user.guests.length).to eq 1
       end
     end
   end

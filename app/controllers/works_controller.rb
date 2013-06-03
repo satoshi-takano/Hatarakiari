@@ -47,8 +47,7 @@ class WorksController < ApplicationController
   # POST /works
   # POST /works.json
   def create
-    @work = Work.new(params[:work])
-
+    @work = current_user.works.build(params[:work])
     respond_to do |format|
       if @work.save
         format.html { redirect_to @work, notice: 'Work was successfully created.' }
@@ -64,7 +63,6 @@ class WorksController < ApplicationController
   # PUT /works/1.json
   def update
     @work = Work.find(params[:id])
-
     respond_to do |format|
       if @work.update_attributes(params[:work])
         format.html { redirect_to @work, notice: 'Work was successfully updated.' }
@@ -79,8 +77,8 @@ class WorksController < ApplicationController
   # DELETE /works/1
   # DELETE /works/1.json
   def destroy
-    @work = Work.find(params[:id])
-    @work.destroy
+    work = current_user.works.find(params[:id])
+    work.destroy
 
     respond_to do |format|
       format.html { redirect_to works_url }
