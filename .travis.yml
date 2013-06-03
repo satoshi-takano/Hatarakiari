@@ -1,4 +1,4 @@
-script: "bundle exec rake db:setup && bundle exec rspec"
+script: "bundle exec rake db:setup && bundle exec rspec -fd"
 language: ruby
 rvm:
   - 1.9.3
