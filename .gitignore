@@ -17,7 +17,6 @@
 .DS_Store
 /public/system/
 .sass-cache
-database.yml
 deploy.rb
 /config/deploy/
 /db/seeds/
