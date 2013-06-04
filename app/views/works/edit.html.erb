@@ -2,6 +2,7 @@
 <%= "Edit " + @work.name %>
 <%  end %>
 
+<h1><%= @work.name %>の編集</h1>
 <%= render 'form' %>
 
 <span class="links"><%= link_to 'Back', work_path(@work) %></span>
