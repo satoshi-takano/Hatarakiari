@@ -19,5 +19,11 @@
 </div>
 
 <script type="text/javascript">
-  $('.dropdown-toggle').dropdown()
+  var toggle = $('.dropdown-toggle');
+  toggle.dropdown()
+  var menu = $('.dropdown-menu');
+  var nameW = $(".user_name").width() + 48;
+  toggle.bind('click', function() {
+      $('.dropdown-menu').css('margin-left', (nameW - menu.width()) * 0.5 + 'px');
+  })
 </script>

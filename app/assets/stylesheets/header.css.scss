@@ -36,10 +36,8 @@ $border-color: #eaeaea;
 
         // <dropdown
         .dropdown {
-            float: left;
 
             .dropdown-menu {
-                left: -50px;
                 top: 37px;
                 border-radius: 0;
                 border: 1px solid $border-color;
