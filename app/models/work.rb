@@ -3,7 +3,7 @@
 class Work < ActiveRecord::Base
   belongs_to :user, :touch => true
 
-  params_for_attachements = { :styles => { :thumb => "320x280#", :large => "640x480"}}
+  params_for_attachements = { :styles => { :thumb => "512x384#", :large => "640x480#"}}
   has_attached_file :image_0, params_for_attachements
   has_attached_file :image_1, params_for_attachements
   has_attached_file :image_2, params_for_attachements
