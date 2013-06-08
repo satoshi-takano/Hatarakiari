@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :day, :at=>'5:00 am' do
+every :day, :at=>'4:30 am' do
   command 'backup perform --trigger hataraki_backup'
 end
