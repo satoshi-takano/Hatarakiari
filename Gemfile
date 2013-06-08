@@ -15,6 +15,7 @@ end
 group :production do
   gem 'mysql2'
   gem 'newrelic_rpm'
+  gem 'whenever', :require=>false
 end
 group :test do
   gem 'rspec'
