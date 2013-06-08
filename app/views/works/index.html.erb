@@ -79,8 +79,8 @@ Portfolio
 
 <div>
   <!-- each years -->
-  <% for works in @years %>
-  <h2><%= works[0].year %></h2>
+  <% @years.each_with_index do |works, i| %>
+  <h2 class="<%= 'first' if i == 0 %>"><%= works[0].year %></h2>
   <ul class="thumbnails">
     <!-- each works in the year-->
     <% for work in works %>

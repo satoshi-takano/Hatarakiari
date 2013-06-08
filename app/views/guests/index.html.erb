@@ -39,6 +39,13 @@
             }
             setTimeout(function() {input._notice.text("")}, 3000);
         })
+
+        $(".delete").bind("mouseover", function(e) {
+            $(e.currentTarget).parent().parent().addClass("hover");
+        }).bind("mouseout", function(e) {
+            $(e.currentTarget).parent().parent().removeClass("hover");
+        })
+
         
 })
 </script>
@@ -63,7 +70,7 @@
   <% end %>
   <% c = 0; @guests.each do |guest| %>
   <li>
-    <p><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"削除してよろしいですか?"} %></p>
+    <p><span class="index"><%= c += 1 %></span><%= guest.login_id %> / <%= guest.login_password %><%= link_to "Delete", guest, :method=>:delete, :data=>{:confirm=>"削除してよろしいですか?"}, :class=>"delete" %></p>
     <%= form_for guest, :url=>{:action=>"update", :id=>guest.id}, :remote=>true do |f| %>
     <div class="p2">
       <span class="memo">Memo : </span><%= f.text_field :memo, :class=>"memo_field" %><span class="notice"></span>
