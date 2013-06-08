@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 
+$(function() {
+    $(".popup").bind('click', function(e) {
+        e.preventDefault();
+        window.open(e.currentTarget.href, ' ', 'width=520, height=430')
+    })
+})

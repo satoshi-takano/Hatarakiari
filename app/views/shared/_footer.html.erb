@@ -1,8 +1,12 @@
 <div id="footer">
-  <ul>
+  <ul class="links">
     <li><%= link_to "About hataraki", "/about" %></li>
     <li><%= link_to "Contact", "/contact" %></li>
     <li><%= link_to "Terms of Service", "/leagal" %></li>
     <li class="last"><%= link_to "Privacy Policy", "/privacy" %></li>
   </ul>
+  <div class="clearfix"></div>
+
+  <%= render :partial=>'shared/social' if should_render_social_buttons %>
 </div>
+

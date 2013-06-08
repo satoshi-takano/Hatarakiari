@@ -21,7 +21,7 @@
   
   <div id="container">
     <%= yield %>
-    <%= render :partial=>"shared/footer" %>
+    <%= render :partial=>"shared/footer", :locals=>{:should_render_social_buttons=>false} %>
   </div>
 
 </body>

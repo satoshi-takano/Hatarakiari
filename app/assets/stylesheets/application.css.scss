@@ -108,18 +108,33 @@ body {
         position: relative;
         display: block;
 
-        li {
-            float: left;
-            font-size: 12px;
-            margin-right: 14px;
-            font-family: Helvetica;
+        .links {
+            li {
+                float: left;
+                font-size: 12px;
+                margin-right: 14px;
+                font-family: Helvetica;
 
-            a {
-                color: #888888;
+                a {
+                    color: #888888;
+                }
+            }
+            li.last {
+                margin-right: 0;
             }
         }
-        li.last {
-            margin-right: 0;
+
+        .share {
+            margin-top: 20px;
+            width: 80px;
+            li {
+                float: left;
+                margin-left:10px;
+                width: auto;
+            }
+            li.hatebu {
+                margin-left: 0;
+            }
         }
     }
     

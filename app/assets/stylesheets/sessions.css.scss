@@ -7,11 +7,16 @@
     }
 }
 
+#footer .share {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #authentication {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
-        
+    
     li {
         list-style: none;
         float: left;
@@ -40,24 +45,6 @@
 
         li:hover {
             opacity:0.8;
-        }
-    }
-
-    .share {
-        $li-w: 120px;
-        margin-left: -40px;
-        margin-top: 50px;
-        width: $li-w * 3 + 10px * 3;
-        li {
-            float: left;
-            margin-left:10px;
-            width: $li-w;
-        }
-        li.twitter {
-            margin-left: 18px;
-        }
-        li.facebook {
-            margin-left: 0;
         }
     }
 
