@@ -13,9 +13,29 @@ label {
 }
 
 #image_selector {
-    input {
-        margin-bottom: 10px;
+    h3 {
+        float: left;
+        margin-right: 10px;
+        font-size:18px;
+        color: #777;
+        font-family: Helvetica;
     }
+    .top {
+        margin-top: 10px;
+    }
+    .thumbnail {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 7px;
+    }
+    input {
+        margin-top: 10px;
+
+    }
+    input.has_image {
+        margin-top: 10px;
+    }
+    margin-bottom: 20px;
 }
 input[type="submit"] {
     margin-top: 10px;

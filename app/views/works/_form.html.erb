@@ -48,9 +48,70 @@
         <div class="span7">
           <%= f.label '画像 (640×480 以上を推奨)' %>
           <div class="field" id="image_selector">
+            <% if @work.id %>
+            <% has_image = had_image = false %>
+            
+            <% if has_image = @work.image_0.exists? %>
+            <h3>1</h3>
+            <div class="top">            
+            <%= image_tag @work.image_0(:small), :class=>'thumbnail' %>
+            <%= f.file_field :image_0, :class=>"has_image" %>
+            </div>
+            <span class="clearfix"></span>
+            <% had_image = has_image; end %>
+            
+            <% if has_image = @work.image_1.exists? %>
+            <h3>2</h3>
+            <div>            
+            <%= image_tag @work.image_1(:small), :class=>'thumbnail' %>
+            <%= f.file_field :image_1, :class=>"has_image" %>
+            </div>
+            <span class="clearfix"></span>
+            <% elsif had_image %>
+            <div class="cloneable"><h3>2</h3><%= f.file_field :image_1 %></div>
+            <% had_image = has_image; end %>
+
+            <% if has_image = @work.image_2.exists? %>
+            <h3>3</h3>
+            <div>            
+            <%= image_tag @work.image_2(:small), :class=>'thumbnail' %>
+            <%= f.file_field :image_2, :class=>"has_image" %>
+            </div>
+            <span class="clearfix"></span>
+            <% elsif had_image %>
+            <div class="cloneable"><h3>3</h3><%= f.file_field :image_2 %></div>
+            <% had_image = has_image; end %>
+
+            <% if has_image = @work.image_3.exists? %>
+            <h3>4</h3>
             <div>
+            <%= image_tag @work.image_3(:small), :class=>'thumbnail' %>
+            <%= f.file_field :image_3, :class=>"has_image" %>
+            </div>
+            <span class="clearfix"></span>
+            <% elsif had_image %>
+            <div class="cloneable"><h3>4</h3><%= f.file_field :image_3 %></div>
+            <% had_image = has_image; end %>
+
+            <% if has_image = @work.image_4.exists? %>
+            <h3>5</h3>
+            <div>            
+            <%= image_tag @work.image_4(:small), :class=>'thumbnail' %>
+            <%= f.file_field :image_4, :class=>"has_image" %>
+            </div>
+            <span class="clearfix"></span>
+            <% elsif had_image %>
+            <div class="cloneable"><h3>5</h3><%= f.file_field :image_4 %></div>
+            <% had_image = has_image; end %>
+
+
+            <% else %>
+            <div class="cloneable">
+              <h3>1</h3>
               <%= f.file_field :image_0 %>
             </div>
+            <% end %>
+            
           </div>
           <div class="field">
             <%= f.label '説明' %>
