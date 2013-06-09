@@ -21,6 +21,7 @@ Hataraki::Application.routes.draw do
   post "/contact" => "static_pages#send_message"
   match "/404" => "errors#error_404"
   match "/401" => "errors#error_401"
+  match "/500" => "errors#error_500"
   match "/:action" => "static_pages#:action"
 
 
