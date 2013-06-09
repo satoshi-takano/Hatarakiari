@@ -56,3 +56,4 @@ gem 'omniauth-github'
 
 gem 'paperclip', '~>3.4.2'
 gem 'therubyracer'
+gem 'i18n_generators'

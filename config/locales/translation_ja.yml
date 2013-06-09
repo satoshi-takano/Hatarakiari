@@ -1,0 +1,55 @@
+ja:
+  activerecord:
+    models:
+      guest: guest  #g
+      user: user  #g
+      work: work  #g
+
+    attributes:
+      guest:
+        login_id: ID
+        login_password: パスワード
+        memo: memo
+        user: :activerecord.models.user  #g
+
+      user:
+        avatar_url: avatar_url  #g
+        guests: guests  #g
+        name: name  #g
+        provider: provider  #g
+        uid: uid  #g
+        works: works  #g
+
+      work:
+        client: クライアント
+        description: 概要
+        image_0: １枚目の画像
+        image_1: ２枚目の画像
+        image_2: ３枚目の画像
+        image_3: ４枚目の画像
+        image_0_content_type: image_0_content_type  #g
+        image_0_file_name: image_0_file_name  #g
+        image_0_file_size: image_0_file_size  #g
+        image_0_updated_at: image_0_updated_at  #g
+        image_1_content_type: image_1_content_type  #g
+        image_1_file_name: image_1_file_name  #g
+        image_1_file_size: image_1_file_size  #g
+        image_1_updated_at: image_1_updated_at  #g
+        image_2_content_type: image_2_content_type  #g
+        image_2_file_name: image_2_file_name  #g
+        image_2_file_size: image_2_file_size  #g
+        image_2_updated_at: image_2_updated_at  #g
+        image_3_content_type: image_3_content_type  #g
+        image_3_file_name: image_3_file_name  #g
+        image_3_file_size: image_3_file_size  #g
+        image_3_updated_at: image_3_updated_at  #g
+        image_4_content_type: image_4_content_type  #g
+        image_4_file_name: image_4_file_name  #g
+        image_4_file_size: image_4_file_size  #g
+        image_4_updated_at: image_4_updated_at  #g
+        name: 名前
+        personal_work: personal_work  #g
+        role: 担当
+        url: URL
+        user: :activerecord.models.user  #g
+        year: 年

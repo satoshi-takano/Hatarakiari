@@ -22,6 +22,6 @@ module WorksHelper
       years.push tmpYears[k]
     end
 
-    years
+    years.reverse
   end
 end

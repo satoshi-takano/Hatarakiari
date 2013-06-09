@@ -26,11 +26,3 @@ function chosen(e) {
     $clone.find("input").bind("change", chosen)[0]._index = idx;
     $image_fields.append($clone);
 }
-
-$("#submit_button").bind("click", function() {
-    if ($("#work_name")[0].value.length == 0) {
-        alert("Name can't be blank");
-        return;
-    }
-    $("form").submit();
-})
