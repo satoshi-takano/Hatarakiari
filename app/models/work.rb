@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 class Work < ActiveRecord::Base
   belongs_to :user, :touch => true
@@ -13,11 +13,11 @@ class Work < ActiveRecord::Base
   attr_accessible :client, :description, :name, :personal_work, :role, :url, :year, :user_id, :image_0, :image_1, :image_2, :image_3, :image_4
   
 
-  validates_presence_of :name, :year
-  validates_numericality_of :year
+  validates_presence_of :name, :year, :message=>"は入力が必須です"
+  validates_numericality_of :year, :message=>"は半角数字で入力してください"
 
-  validates_attachment_presence :image_0
-  validates_attachment_content_type :image_0, :image_1, :image_2, :image_3, :image_4, :content_type => %w{ image/jpeg image/png image/gif }
+  validates_attachment_presence :image_0, :message=>"はアップロードが必須です"
+  validates_attachment_content_type :image_0, :image_1, :image_2, :image_3, :image_4, :content_type => %w{ image/jpeg image/png image/gif }, :message=>"の画像フォーマットにはJPEG, PNG, GIFのみご利用できます"
 
   after_initialize :init
 
