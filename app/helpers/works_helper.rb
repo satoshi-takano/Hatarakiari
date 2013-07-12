@@ -19,7 +19,7 @@ module WorksHelper
 
     years = []
     for k in keys
-      years.push tmpYears[k]
+      years.push tmpYears[k].reverse
     end
 
     years.reverse
