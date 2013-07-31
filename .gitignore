@@ -20,3 +20,4 @@
 deploy.rb
 /config/deploy/
 /db/seeds/
+/privates/
