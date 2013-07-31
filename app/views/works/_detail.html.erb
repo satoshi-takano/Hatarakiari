@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <% if work.user_id == current_user.id %>
+    <% if current_user && work.user_id == current_user.id %>
     <div id="user_util">
       <a href="<%= edit_work_path(work) %>" class="btn">
         Edit

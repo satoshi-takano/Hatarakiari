@@ -19,6 +19,9 @@ class WorksController < ApplicationController
 
     if current_guest && @work == nil
       @work = Work.find_by_user_id_and_id(current_guest.user_id, params[:id])
+      if @work == nil
+        @work = Work.find_by_user_id_and_id(1, params[:id])
+      end
     end
     
     if @work == nil
