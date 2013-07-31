@@ -1,11 +1,6 @@
 module WorksHelper
-  def loadWorksEachYears
-    if current_user
-      works = User.find(current_user.id).works;
-    elsif current_guest
-      works = User.find(current_guest.user_id).works;
-    end
-    
+  def loadWorksEachYears(user_id)
+    works = User.find(user_id).works;
     tmpYears = { }
 
     for w in works

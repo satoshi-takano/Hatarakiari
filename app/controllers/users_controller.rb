@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   before_filter :require_guest, :only=>[:show_works, :show]
   
   def show_works
-    @years = loadWorksEachYears
+    @years = loadWorksEachYears(params[:user_id] || current_guest.user_id)
     render "works/index"
   end
 
   def show
-    @work = Work.find_by_user_id_and_id(current_guest.user_id, params[:work_id])
+    @work = Work.find_by_user_id_and_id(params[:user_id] || current_guest.user_id, params[:work_id])
     if @work
       render "works/show"
     else
@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   def require_guest
     @user_id = params[:user_id]
     if (@user_id == "1")
-#      admin_logout
       session[:guest_id] = @user_id;
     end
     if current_guest == nil
