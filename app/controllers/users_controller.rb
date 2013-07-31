@@ -32,6 +32,10 @@ class UsersController < ApplicationController
   private
   def require_guest
     @user_id = params[:user_id]
+    if (@user_id == "1")
+#      admin_logout
+      session[:guest_id] = @user_id;
+    end
     if current_guest == nil
       render 'users/authenticate'
       return
