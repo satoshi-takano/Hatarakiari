@@ -101,7 +101,7 @@ Portfolio
           <% for type in work.role.split "," %>
           <span class="label"><%= type %></span>
           <% end %>
-          <p class="description"><%= truncate(work.description, {:length=>110}) %></p>
+          <p class="description"><%= simple_format truncate(work.description, {:length=>110}) %></p>
           <p>
             <a href="<%= '/works/' + work.id.to_s %>" class="detail">> <%= work.name %>の詳細を見る</a>
           </p>
