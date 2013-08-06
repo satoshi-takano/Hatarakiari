@@ -29,7 +29,12 @@
 }
 
 #container {
-
+    .row-fluid {
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted #d8d8d8;
+    }
+    
     h2 {
         font-size: 30px;
         margin-top: 60px;
@@ -47,7 +52,7 @@
             margin-top: 8px;
             margin-bottom: 20px;
             color: #555555;
-            box-shadow: 0 0 0 0;
+
         }
     }
 
@@ -65,18 +70,38 @@
         .image {
             text-align: center;
             position: relative;
+            border: 1px solid #d8d8d8;
+            img {width: 100%;}
         }
         h4 {
-            font-size: 15px;
-            color: #3c3c3c;
-            margin-bottom: 10px;
+            font-size: 17px;
+            color: #777;
+            margin-bottom: 3px;
             font-weight: lighter;
+
         }
         .caption .btn {
             margin-top: 15px;
         }
-        border: 1px solid #d7d7d7;
-        border-radius: 2px;
+        .caption a {
+            margin-right: 10px;
+        }
+        border: none;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+
+        .detail {
+            margin-top: 10px;
+            display: block;
+        }
+        .url {
+            color : #8f8f8f;
+        }
+
+        .description {
+            margin-top: 15px;
+            color: #777;
+        }
     }
 
     #nowork {

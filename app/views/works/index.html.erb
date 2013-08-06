@@ -77,14 +77,19 @@ Portfolio
 <h2 id="nowork">0 Works</h2>
 <% end %>
 
-<div>
+<div id="works">
   <!-- each years -->
   <% @years.each_with_index do |works, i| %>
   <h2 class="<%= 'first' if i == 0 %>"><%= works[0].year %></h2>
-  <ul class="thumbnails">
+  
+    <% cnt = 0; %>
     <!-- each works in the year-->
     <% for work in works %>
-    <li class="span4">
+
+    <% if cnt == 0 %>
+    <ul class="row-fluid">
+    <% end %>
+    <li class="span6">
       <div class="thumbnail">
         <div class="image">
           <a href="<%= '/works/' + work.id.to_s %>">
@@ -92,18 +97,26 @@ Portfolio
             <%= image_tag work.image_0.url(:thumb) %></a>
         </div>
         <div class="caption">
-          <h4><%= work.name %></h4>
+          <h4><a href="<%= '/works/' + work.id.to_s %>"><%= work.name %></a></h4>
+          <% if 0 < work.url.length %>
+          <a href="<%= work.url %>" class="url"><%= work.url %></a>
+          <% end %>
           <% for type in work.role.split "," %>
           <span class="label"><%= type %></span>
           <% end %>
+          <p class="description"><%= truncate(work.description, {:length=>140}) %></p>
           <p>
-            <a href="<%= '/works/' + work.id.to_s %>" class="btn btn-block">Detail</a>
+            <a href="<%= '/works/' + work.id.to_s %>" class="detail">> <%= work.name %>の詳細を見る</a>
           </p>
         </div>
       </div>
     </li>
+    <% if cnt == 1 %>
+    </ul>
+    <% cnt = -1 %>
     <% end %>
-  </ul>
+    <% cnt+=1 %>
+    <% end %>
 
   <% end %>
 </div>
