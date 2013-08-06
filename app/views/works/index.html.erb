@@ -73,18 +73,15 @@ Portfolio
 <% end %>
 
 <% if @years.empty? %>
-<!-- <span class="label" id="nowork">No work</span> -->
 <h2 id="nowork">0 Works</h2>
 <% end %>
 
 <div id="works">
-  <!-- each years -->
+  <% cnt = 0; %>
   <% @years.each_with_index do |works, i| %>
   <h2 class="<%= 'first' if i == 0 %>"><%= works[0].year %></h2>
   
-    <% cnt = 0; %>
-    <!-- each works in the year-->
-    <% for work in works %>
+    <% works.each_with_index do |work, j| %>
 
     <% if cnt == 0 %>
     <ul class="row-fluid">
@@ -98,20 +95,20 @@ Portfolio
         </div>
         <div class="caption">
           <h4><a href="<%= '/works/' + work.id.to_s %>"><%= work.name %></a></h4>
-          <% if 0 < work.url.length %>
+          <% if (work.url && 0 < work.url.length) %>
           <a href="<%= work.url %>" class="url"><%= truncate(work.url, {:length=>40}) %></a>
           <% end %>
           <% for type in work.role.split "," %>
           <span class="label"><%= type %></span>
           <% end %>
-          <p class="description"><%= truncate(work.description, {:length=>140}) %></p>
+          <p class="description"><%= truncate(work.description, {:length=>110}) %></p>
           <p>
             <a href="<%= '/works/' + work.id.to_s %>" class="detail">> <%= work.name %>の詳細を見る</a>
           </p>
         </div>
       </div>
     </li>
-    <% if cnt == 1 %>
+    <% p works.length - 1 == j, j, works.length; if cnt == 1 || works.length - 1 == j %>
     </ul>
     <% cnt = -1 %>
     <% end %>
