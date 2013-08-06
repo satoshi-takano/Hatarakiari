@@ -99,7 +99,7 @@ Portfolio
         <div class="caption">
           <h4><a href="<%= '/works/' + work.id.to_s %>"><%= work.name %></a></h4>
           <% if 0 < work.url.length %>
-          <a href="<%= work.url %>" class="url"><%= work.url %></a>
+          <a href="<%= work.url %>" class="url"><%= truncate(work.url, {:length=>40}) %></a>
           <% end %>
           <% for type in work.role.split "," %>
           <span class="label"><%= type %></span>
