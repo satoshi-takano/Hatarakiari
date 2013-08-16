@@ -7,6 +7,7 @@ Portfolio
 <%= stylesheet_link_tag "bootstrap-modal", :media=>"all" %>
 <%= javascript_include_tag "bootstrap-modal" %>
 <%= javascript_include_tag "bootstrap-modalmanager" %>
+<%= javascript_include_tag "works" %>
 <script type="text/javascript">
     $(function() {
         var list = $(".nav > li");
@@ -77,6 +78,15 @@ Portfolio
 <% end %>
 
 <div id="works">
+  <ul id="roles">
+    <% cnt = 0; %>
+    <% @roles.keys.each_with_index do |role, i| %>
+    <li><%= role %> <%= @roles[role] %></li>
+    <% end %>
+  </ul>
+  <span class="clearfix">.</span>
+  
+  
   <% cnt = 0; %>
   <% @years.each_with_index do |works, i| %>
   <h2 class="<%= 'first' if i == 0 %>"><%= works[0].year %></h2>
