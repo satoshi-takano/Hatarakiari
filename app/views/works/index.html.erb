@@ -98,7 +98,7 @@ Portfolio
           <% if (work.url && 0 < work.url.length) %>
           <a href="<%= work.url %>" class="url"><%= truncate(work.url, {:length=>40}) %></a>
           <% end %>
-          <% for type in work.role.split "," %>
+          <% for type in work.roles %>
           <span class="label"><%= type %></span>
           <% end %>
           <p class="description"><%= simple_format truncate(work.description, {:length=>110}) %></p>

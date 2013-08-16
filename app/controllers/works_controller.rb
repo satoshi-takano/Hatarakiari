@@ -7,7 +7,7 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @years = loadWorksEachYears(current_user.id)
+    @years = getWorksEachYears(current_user)
   end
 
   # GET /works/1

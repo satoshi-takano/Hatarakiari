@@ -25,7 +25,7 @@ describe GuestsController do
       it 'should update the memo attribute of the guest' do
         post :create, :guest=>{ :login_id=>"guest", :login_password=>"secret password", :memo=>'memo' }
         expect(current_user.guests.first.memo).to eq 'memo'
-        post :update, :id=>current_user.id, :guest=>{ :memo=>'updated memo' }
+        post :update, :id=>current_user.guests.last.id, :guest=>{ :memo=>'updated memo' }
         expect(current_user.guests.first.memo).to eq 'updated memo'        
       end
     end

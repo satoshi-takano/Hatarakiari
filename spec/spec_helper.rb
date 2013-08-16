@@ -37,7 +37,11 @@ RSpec.configure do |config|
   config.order = "random"
 end
 
+require 'works_helper'
+
 module Helpers
+  include WorksHelper
+  
   def admin_login(user)
     controller.stub(:current_user) { user }
     controller.stub(:current_guest) { nil }    

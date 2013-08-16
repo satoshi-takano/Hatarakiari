@@ -44,4 +44,8 @@ class Work < ActiveRecord::Base
     parsed
   end
 
+  def  roles
+    return role.split ","
+  end
+
 end

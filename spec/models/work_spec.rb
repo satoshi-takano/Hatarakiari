@@ -24,5 +24,11 @@ describe Work do
       end
     end
   end
+
+  describe 'Work#roles' do
+    it 'should return [iOS, Android]' do
+     FactoryGirl.build(:work1).roles.should == ['iOS', 'Android']
+    end
+  end
     
 end

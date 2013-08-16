@@ -1,6 +1,6 @@
 module WorksHelper
-  def loadWorksEachYears(user_id)
-    works = User.find(user_id).works;
+  def getWorksEachYears(user)
+    works = user.works
     tmpYears = { }
 
     for w in works
@@ -18,5 +18,20 @@ module WorksHelper
     end
 
     years.reverse
+  end
+
+  def getAllRoles(user)
+    works = user.works
+    allRoles = { }
+
+    for w in works
+      roles = w.roles
+      for r in roles
+        allRoles[r] = allRoles[r] || 0
+        allRoles[r] += 1
+      end
+    end
+
+    allRoles
   end
 end

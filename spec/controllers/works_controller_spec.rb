@@ -13,6 +13,16 @@ describe WorksController do
       admin_login(@user)
     end
 
+    describe 'helper test' do
+      it 'should return 2012' do
+        getWorksEachYears(current_user)[0][0].year.should == 2012
+      end
+
+      it 'should return {"Native" => 1, "iOS" => 1}' do
+        getAllRoles(current_user).should == { 'Native' => 1, 'iOS' => 1}
+      end
+    end
+
     describe '#index' do
       it 'should render works/index' do
         get :index

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_guest, :only=>[:show_works, :show]
   
   def show_works
-    @years = loadWorksEachYears(params[:user_id] || current_guest.user_id)
+    @years = getWorksEachYears(User.find(params[:user_id]) || current_guest)
     render "works/index"
   end
 
