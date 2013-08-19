@@ -114,7 +114,7 @@ Portfolio
               <a data-bind="if: url, attr: {href: url}, text: url" class="url"></a>
               <div class="description" data-bind="html: description, truncateText: [110, $index()]"></div>
               <p>
-                <a class="detail" data-bind="attr: {href: '/works/' + id}, text: name + 'の詳細を見る'"></a>
+                <a class="detail" data-bind="attr: {href: '/works/' + id}, text: '> ' + name + 'の詳細を見る'"></a>
               </p>
             </div>
           </div>

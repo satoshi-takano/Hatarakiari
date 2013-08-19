@@ -81,7 +81,7 @@
         h4 {
             font-size: 17px;
             color: #777;
-            margin-bottom: 5px;
+            margin-bottom: 7px;
             font-weight: lighter;
         }
         .roles {
@@ -89,7 +89,8 @@
                 padding: 2px 5px 0px 5px;
                 font-size: 10px;
             }
-            margin-bottom: 5px;
+            margin-bottom: 7px;
+            height: 15px;
         }
         .caption .btn {
             margin-top: 15px;
@@ -108,8 +109,9 @@
         .description {
             margin-top: 15px;
             color: #777;
-            line-height: 1.9em;
-
+            line-height: 2em;
+            height: 70px;
+            overflow-y: hidden;
         }
         .detail {
             margin-top: 20px;

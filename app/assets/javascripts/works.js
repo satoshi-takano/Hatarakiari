@@ -74,19 +74,18 @@ $(function() {
 
     ko.bindingHandlers.truncateText = {
         preOddHeight: 0,
+        preCaption: null,
+        
         update: function(elem, valueAccessor) {
             var $elem = $(elem);
             var txt = $elem.text();
             var args = valueAccessor();
             var lim = args[0];
-            var isOdd = args[1] % 2 == 0;
-            if (isOdd) preOddHeight = $elem.height();
-
+            
             if (lim < txt.length) {
                 txt = txt.substr(0, lim);
                 $elem.text(txt + "...");
             }
-//            $elem.css("height", preOddHeight + "px");
         }
     };
     
