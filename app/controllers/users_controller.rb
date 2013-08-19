@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @years = getWorksEachYears(user)
     @roles = getAllRoles(user)
 
-    p @years[0][0].to_json
     respond_to do |format|
       format.html { render "works/index" }
       format.json {
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
           )
       }
     end
-    
   end
 
   def show

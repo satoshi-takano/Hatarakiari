@@ -1,8 +1,12 @@
 $(function() {
+    var userIDMatch = /^http:\/\/.*?\/users\/([0-9]+)/.exec(location.href);
+    var userID = -1;
+    
+    if (userIDMatch) userID = userIDMatch[1];
     
     $.ajax({
         type: "GET",
-        url: "/users/1.json",
+        url: userID != -1 ? "/users/" + userID : "/works",
         dataType:"json",
         success: function(_years) {
             $(_years).each(function(i) {

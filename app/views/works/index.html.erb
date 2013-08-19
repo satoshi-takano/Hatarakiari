@@ -87,7 +87,9 @@ Portfolio
   </script>
   
   <ul id="roles">
-    <li class="active" data-bind="click: toggleTagFiltering">All</li>
+    <% if !@years.empty? %>
+      <li class="active" data-bind="click: toggleTagFiltering">All</li>
+    <% end %>
     <% cnt = 0; %>
     <% @roles.keys.each_with_index do |role, i| %>
     <li data-bind="click: toggleTagFiltering"><%= role %> <%= @roles[role] %></li>
