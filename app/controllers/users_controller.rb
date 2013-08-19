@@ -7,7 +7,18 @@ class UsersController < ApplicationController
     user = User.find(params[:user_id]) || current_guest
     @years = getWorksEachYears(user)
     @roles = getAllRoles(user)
-    render "works/index"
+
+    p @years[0][0].to_json
+    respond_to do |format|
+      format.html { render "works/index" }
+      format.json {
+        render :text => @years.to_json(
+          :only => [:id, :name, :year, :role, :personal_work, :url, :description, :image_index],
+          :methods => [:image_index]
+          )
+      }
+    end
+    
   end
 
   def show

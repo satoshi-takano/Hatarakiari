@@ -48,4 +48,7 @@ class Work < ActiveRecord::Base
     return role.split ","
   end
 
+  def image_index
+    image_0.url(:thumb)
+  end
 end

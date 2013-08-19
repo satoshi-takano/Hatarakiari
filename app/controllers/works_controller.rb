@@ -9,6 +9,11 @@ class WorksController < ApplicationController
   def index
     @years = getWorksEachYears(current_user)
     @roles = getAllRoles(current_user)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @years }
+    end
   end
 
   # GET /works/1

@@ -7,6 +7,7 @@ Portfolio
 <%= stylesheet_link_tag "bootstrap-modal", :media=>"all" %>
 <%= javascript_include_tag "bootstrap-modal" %>
 <%= javascript_include_tag "bootstrap-modalmanager" %>
+<%= javascript_include_tag "knockout" %>
 <%= javascript_include_tag "works" %>
 <script type="text/javascript">
     $(function() {
@@ -78,52 +79,51 @@ Portfolio
 <% end %>
 
 <div id="works">
+  <script type="text/javascript">
+    var roles = [];
+    <% @roles.keys.each_with_index do |role, i| %>
+    roles.push({ <%= role %>: <%= @roles[role] %> });
+    <% end %>
+  </script>
+  
   <ul id="roles">
+    <li class="active">All</li>
     <% cnt = 0; %>
     <% @roles.keys.each_with_index do |role, i| %>
-    <li><%= role %> <%= @roles[role] %></li>
+    <li data-bind="click: toggleTagFiltering"><%= role %> <%= @roles[role] %></li>
     <% end %>
   </ul>
   <span class="clearfix">.</span>
   
   
-  <% cnt = 0; %>
-  <% @years.each_with_index do |works, i| %>
-  <h2 class="<%= 'first' if i == 0 %>"><%= works[0].year %></h2>
-  
-    <% works.each_with_index do |work, j| %>
+  <ul data-bind="foreach: years">
+    <li>
+      <h2 data-bind="text: year"></h2>
 
-    <% if cnt == 0 %>
-    <ul class="row-fluid">
-    <% end %>
-    <li class="span6">
-      <div class="thumbnail">
-        <div class="image">
-          <a href="<%= '/works/' + work.id.to_s %>">
-            <% if work.personal_work %><span class="label personal-label">Personal work</span><% end %>
-            <%= image_tag work.image_0.url(:thumb) %></a>
-        </div>
-        <div class="caption">
-          <h4><a href="<%= '/works/' + work.id.to_s %>"><%= work.name %></a></h4>
-          <% if (work.url && 0 < work.url.length) %>
-          <a href="<%= work.url %>" class="url"><%= truncate(work.url, {:length=>40}) %></a>
-          <% end %>
-          <% for type in work.roles %>
-          <span class="label"><%= type %></span>
-          <% end %>
-          <p class="description"><%= simple_format truncate(work.description, {:length=>110}) %></p>
-          <p>
-            <a href="<%= '/works/' + work.id.to_s %>" class="detail">> <%= work.name %>の詳細を見る</a>
-          </p>
-        </div>
-      </div>
+      <ul data-bind="foreach: works" class="row-fluid">
+        <li class="span6">
+          <div class="thumbnail">
+            <div class="image">
+              <a data-bind="attr: {href: '/works/' + id}">
+                <span class="label personal-label" data-bind="if: personal_work">Personal work</span>
+                <img data-bind="attr: {src: image_index}"/>
+              </a>
+            </div>
+            <div class="caption">
+              <h4><a data-bind="attr: {href: '/works/' + id}, text:name"></a></h4>
+              <ul data-bind="foreach: roles" class="roles">
+                 <li class="label" data-bind="text: $data"></li>
+              </ul>
+              <a data-bind="if: url, attr: {href: url}, text: url" class="url"></a>
+              <div class="description" data-bind="html: description"></div>
+              <p>
+                <a class="detail" data-bind="attr: {href: '/works/' + id}, text: name + 'の詳細を見る'"></a>
+              </p>
+            </div>
+          </div>
+        </li> <!-- / span6 -->
+      </ul>
     </li>
-    <% p works.length - 1 == j, j, works.length; if cnt == 1 || works.length - 1 == j %>
-    </ul>
-    <% cnt = -1 %>
-    <% end %>
-    <% cnt+=1 %>
-    <% end %>
+  </ul>
 
-  <% end %>
 </div>

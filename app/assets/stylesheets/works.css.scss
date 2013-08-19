@@ -73,9 +73,15 @@
         h4 {
             font-size: 17px;
             color: #777;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             font-weight: lighter;
-
+        }
+        .roles {
+            .label {
+                padding: 2px 5px 0px 5px;
+                font-size: 10px;
+            }
+            margin-bottom: 5px;
         }
         .caption .btn {
             margin-top: 15px;
@@ -116,7 +122,7 @@
 
 #roles {
     li {
-        background-color: #9a9a9a;
+        background-color: #bbbbbb;
         float: left;
         display: block;
         margin-right: 10px;
@@ -128,5 +134,9 @@
         -moz-border-radius: 4px;
         border-radius: 4px;
         cursor: pointer;
+    }
+    .active {
+        background-color: #8a8a8a;
+        cursor: default;
     }
 }
