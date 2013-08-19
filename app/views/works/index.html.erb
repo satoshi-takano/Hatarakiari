@@ -79,12 +79,6 @@ Portfolio
 <% end %>
 
 <div id="works">
-  <script type="text/javascript">
-    var roles = [];
-    <% @roles.keys.each_with_index do |role, i| %>
-    roles.push({ <%= role %>: <%= @roles[role] %> });
-    <% end %>
-  </script>
   
   <ul id="roles">
     <% if !@years.empty? %>
@@ -103,7 +97,8 @@ Portfolio
       <h2 data-bind="text: year"></h2>
 
       <ul data-bind="foreach: works" class="row-fluid">
-        <li class="span6" data-bind="if: enabled, visible: enabled">
+        <!-- ko if: enabled -->
+        <li class="span6">
           <div class="thumbnail">
             <div class="image">
               <a data-bind="attr: {href: '/works/' + id}">
@@ -123,7 +118,8 @@ Portfolio
               </p>
             </div>
           </div>
-        </li> <!-- / span6 -->
+        </li>
+        <!-- /ko -->
       </ul>
     </li>
   </ul>

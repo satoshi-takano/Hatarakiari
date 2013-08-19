@@ -86,7 +86,7 @@ $(function() {
                 txt = txt.substr(0, lim);
                 $elem.text(txt + "...");
             }
-            $elem.css("height", preOddHeight + "px");
+//            $elem.css("height", preOddHeight + "px");
         }
     };
     
