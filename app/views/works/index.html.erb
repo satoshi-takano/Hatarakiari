@@ -87,7 +87,7 @@ Portfolio
   </script>
   
   <ul id="roles">
-    <li class="active">All</li>
+    <li class="active" data-bind="click: toggleTagFiltering">All</li>
     <% cnt = 0; %>
     <% @roles.keys.each_with_index do |role, i| %>
     <li data-bind="click: toggleTagFiltering"><%= role %> <%= @roles[role] %></li>
@@ -97,11 +97,11 @@ Portfolio
   
   
   <ul data-bind="foreach: years">
-    <li>
+    <li data-bind="if: hasWorks">
       <h2 data-bind="text: year"></h2>
 
       <ul data-bind="foreach: works" class="row-fluid">
-        <li class="span6">
+        <li class="span6" data-bind="if: enabled, visible: enabled">
           <div class="thumbnail">
             <div class="image">
               <a data-bind="attr: {href: '/works/' + id}">
